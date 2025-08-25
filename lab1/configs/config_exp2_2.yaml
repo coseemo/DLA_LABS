@@ -11,7 +11,7 @@ teacher_model:
   type: "CNN"
   params:
     block_type: "basic"
-    layers: 9
+    layers: [5, 6, 8, 5]
     num_classes: 10
     residual: true
     zero_init_residual: false
@@ -21,7 +21,7 @@ student_model:
   type: "CNN"
   params:
     block_type: "basic"
-    layers: 3
+    layers: [2, 2, 2, 2]
     num_classes: 10
     residual: true
     zero_init_residual: false
