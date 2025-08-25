@@ -1,0 +1,35 @@
+#Esperimento 1.2: MLP con e senza connessioni residuali
+seed: 42 
+
+data:
+  batch_size: 128
+  validation_split: 20  #Percentuale che definisce la grandezza del validation set
+  num_workers: 4
+
+model:
+  type: "MLP"
+  params:
+    input_size: 784  #28*28 for MNIST
+    layers_dim: 128
+    class_num: 10
+    hidden_layers_num: 2  #Parametro che verrà sovrascritto in esecuzione (prove su profofndità)
+    residual: false  #Parametro che verrà sovrascritto in esecuzione (prove su connessioni residuali)
+    activation: "ReLU"
+    dropout: 0.2
+    batch_norm: true
+
+training:
+  epochs: 30
+  criterion: "CrossEntropyLoss"
+  optimizer: "Adam"
+  lr: 0.001
+  scheduler: "CosineAnnealingLR"
+
+experiment:
+  widths: [16, 32, 64, 128] #Varie ampiezze di test
+  depths: [5, 10, 20, 40]  #Varie profondità di test
+  analyze_gradients: true
+
+logging:
+  project_name: "LAB1-CNN"
+  log_gradients: true
