@@ -1,0 +1,20 @@
+model_name: openai/clip-vit-base-patch16
+dataset_name: songweig/imagenet_sketch  #dataset con gli sketch 
+wandb_project: LAB3-Transformers
+run_name: clip-ex3-image                     #image, text, both-lora, prompt            
+adaptation: image_encoder
+#use_lora: true
+#lora_r: 8
+#lora_alpha: 16
+#lora_dropout: 0.05
+#num_virtual_tokens: 10
+
+training_args:
+  learning_rate: 0.00005
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 8
+  num_train_epochs: 3
+  weight_decay: 0.01
+  gradient_accumulation_steps: 2
+  fp16: false
+

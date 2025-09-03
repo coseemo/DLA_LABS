@@ -1,5 +1,5 @@
 #Esperimento 2.2: Knowledge Distillation
-seed: 42 
+seed: 0
 
 data:
   batch_size: 128
@@ -11,31 +11,38 @@ teacher_model:
   type: "CNN"
   params:
     block_type: "basic"
-    layers: [5, 6, 8, 5]
+    layers: [3, 4, 6, 3]
     num_classes: 10
     residual: true
-    zero_init_residual: false
+    zero_init_residual: true
 
 #Modello studente (più piccolo)
 student_model:
   type: "CNN"
   params:
     block_type: "basic"
-    layers: [2, 2, 2, 2]
+    layers: [1, 1, 1, 1]
     num_classes: 10
-    residual: true
+    residual: false
     zero_init_residual: false
 
-training:
+training_teacher:
   epochs: 100
   criterion: "CrossEntropyLoss"
   optimizer: "Adam"
-  lr: 0.1
+  lr: 0.001
+  scheduler: "CosineAnnealingLR"
+  
+training_student:
+  epochs: 50
+  criterion: "CrossEntropyLoss"
+  optimizer: "Adam"
+  lr: 0.03
   scheduler: "CosineAnnealingLR"
 
 distillation:
   temperature: 3.0
-  alpha: 0.7
+  alpha: 0.9
 
 logging:
   project_name: "LAB1-CNN"

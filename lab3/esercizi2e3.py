@@ -1,6 +1,7 @@
 import wandb
 from datasets import load_dataset
 from logger import Logger
+from peft import LoraConfig, TaskType, get_peft_model
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, DataCollatorWithPadding, TrainingArguments, Trainer
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
@@ -55,7 +56,7 @@ def compute_metrics(eval_preds):
     }
     
 
-def esercizio2(config):
+def esercizi2e3(config):
 
     ds_name = config['dataset_name']
     model_name = config['model_name']
@@ -95,7 +96,7 @@ def esercizio2(config):
     t_args_cfg = config.get("training_args", {})
     t_args = TrainingArguments(
         output_dir="./results",
-        run_name=config.get("run_name", "nlp-ex2"),
+        run_name=config.get("run_name", "ex2"),
         eval_strategy="epoch",
         save_strategy="epoch",
         learning_rate=t_args_cfg.get("learning_rate", 5e-5),
@@ -110,8 +111,35 @@ def esercizio2(config):
         gradient_accumulation_steps=t_args_cfg.get("gradient_accumulation_steps", 2),
         #Disabilita opzione di conversione da 32 a 16 bit (sto usando la cpu)
         fp16=t_args_cfg.get("fp16", False),
-        report_to=None,
+        report_to="wandb",
     )
+
+    #Esercizio 3.1
+    #Se lora è abilitato gran parte del modello viene congelata 
+    #e andiamo a trainare soltanto alcuni moduli del modello
+    if config["lora_args"]["lora"]:
+        lora_config = LoraConfig(
+            r=config["lora_args"]["rank"],  #rango delle matrici a bassa dimensionalità A e B
+            lora_alpha=config["lora_args"]["alpha"],  #fattore di scala che determina l'impatto di A e B sui parametri del modello
+            #Moduli del modello su cui andiamo ad applicare lora:
+            #Multi-Head Self Attention [q,k,v,out]
+            #Feed-Forward [lin1 e lin2]
+            #Senza modificare tutto il modelli, modifichiamo ciò a cui "prestiamo attenzione"
+            #e come lo valutiamo
+            target_modules=["q_lin", "k_lin", "v_lin", "out_lin", "lin1", "lin2"], 
+            lora_dropout=0.1,
+            bias="none",
+            task_type=TaskType.SEQ_CLS
+        )
+
+        #Inizializzo il modello con lora utilizzando la configurazione sopra
+        model = get_peft_model(model, lora_config)
+
+        #Contiamo i parametri totali e quelli apprendibili
+        total_params = sum(p.numel() for p in model.parameters())
+        trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print(f"\nTotal parameters: {total_params:,}")
+        print(f"Trainable parameters: {trainable_params:,} ({trainable_params / total_params:.2%})")
 
     #Configurazione del trainer
     trainer = Trainer(

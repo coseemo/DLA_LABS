@@ -17,3 +17,5 @@ class Logger:
 
     def finish(self):
         wandb.finish()
+
+

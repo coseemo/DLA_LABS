@@ -12,14 +12,15 @@ class MLP_Block(nn.Module):
         super().__init__()
 
         #Tramite getattr gestisco l'utilizzo di possibili attivazioni diverse
-        self.activation = getattr(nn, activation)
+        self.activation = nn.ReLU(inplace = False) if activation.lower() == "relu" else getattr(nn, activation)()
+
 
         #Ogni blocco è un insieme di layer sequenziali:
         if batch_norm:
             self.block = nn.Sequential(
                 nn.Linear(in_size, out_size),          #layer completamente connesso 
                 nn.BatchNorm1d(out_size),              #applicazione della normalizzazione
-                self.activation(),                     #applicazione dell'attivazione 
+                self.activation,                     #applicazione dell'attivazione 
                 nn.Dropout(dropout)                    #applicazione del dropout
             )
 
@@ -27,7 +28,7 @@ class MLP_Block(nn.Module):
         else:
             self.block = nn.Sequential(
                 nn.Linear(in_size, out_size),
-                self.activation(),
+                self.activation,
                 nn.Dropout(dropout)
             )
 
@@ -73,7 +74,7 @@ class MLP(nn.Module):
             for layer in self.hidden_layers:
                 res = x
                 x = layer(x)
-                x += res
+                x = layer(x) + res
         else:
             for layer in self.hidden_layers:
                 x = layer(x)
@@ -95,7 +96,7 @@ class CNN_Block(nn.Module):
     #(nel modulo Bottleneck in resnet.py, troviamo infatti expansion: int = 4)
     expansion: int = 1
 
-    def __init__(self, in_planes, out_planes, stride=1, downsample=None, norm_layer=None, residual=False):
+    def __init__(self, in_planes, out_planes, stride=1, downsample=None, residual=False):
         super().__init__()
 
         self.norm_layer = nn.BatchNorm2d   
@@ -143,11 +144,11 @@ class CNN(nn.Module):
     ):
         super(CNN, self).__init__()
 
-        self.inplanes = 16
+        self.inplanes = 64
         self.residual = residual
 
-        self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1, bias=False)    #Convoluzione iniziale
-        self.bn1 = nn.BatchNorm2d(16)
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)    #Convoluzione iniziale
+        self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
 
@@ -162,13 +163,13 @@ class CNN(nn.Module):
             raise ValueError("must be basic or bottleneck")
 
         #Si seguono le specifiche utilizzate nel paper di riferimento per gli esperimenti su CIFAR-10
-        self.layer1 = self._make_layer(block, 16, layers[0])
-        self.layer2 = self._make_layer(block, 32, layers[1], stride=2)
-        self.layer3 = self._make_layer(block, 64, layers[2], stride=2)
-        self.layer4 = self._make_layer(block, 128, layers[3], stride=2)
-
+        self.layer1 = self._make_layer(block, 64, layers[0])
+        self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
+        self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
+        self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
+        
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-        self.fc = nn.Linear(64 * block.expansion, num_classes)
+        self.fc = nn.Linear(512 * block.expansion, num_classes)
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None
@@ -197,10 +198,13 @@ class CNN(nn.Module):
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
+        x = self.maxpool(x)
+
 
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
+        x = self.layer4(x)
 
         x = self.avgpool(x)
         x = torch.flatten(x, 1)

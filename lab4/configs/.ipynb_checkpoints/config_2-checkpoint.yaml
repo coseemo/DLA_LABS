@@ -1,0 +1,25 @@
+seed: 99
+
+device: auto
+
+data:
+  batch_size: 1
+  validation_split: 20
+  num_workers: 4
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2023, 0.1994, 0.2010]
+
+model:
+  path: "models/CNNplus.pth"          #"models/cifar10_CNN.pth", "models/cifar10_CNNplus.pth", "models/cifar10_Autoencoder.pth"
+  
+setup:
+  criterion: "CrossEntropyLoss"           #per le cnn "CrossEntropyLoss" per gli autoencoder "MSELoss"
+  criterion_params: null   #null {"reduction":"none"} 
+
+fgsm:
+  epsilons_cnn: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+  epsilons_ae: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+  train_epsilon: 0.3
+
+logging:
+  project_name: "Lab4-OOD_Detection"

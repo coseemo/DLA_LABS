@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 from torch.optim import lr_scheduler
+import torch.nn.functional as F
 from tqdm import tqdm
 import wandb
 
@@ -243,7 +244,7 @@ class Distillery_Runner:
                     logits = self.teacher(inputs)
                     
                     #Salviamo i logits usando l'indice del batch
-                    teacher_logits[batch_idx] = logits
+                    teacher_logits[batch_idx] = logits.cpu()
             
             return teacher_logits
 
@@ -252,12 +253,10 @@ class Distillery_Runner:
 
         self.student.train()
 
-        #Otteniamo i logits dal teacher sul training set
-        print("Obtaining logits from teacher...")
-        teacher_logits = obtain_teacher_logits(distill_dl)
-        
         train_losses = []
         train_accuracies = []
+        distill_losses = []
+        distill_accuracies = []
 
         for epoch in range(test_num_epochs): 
             running_loss, correct, total = 0.0, 0, 0
@@ -265,9 +264,6 @@ class Distillery_Runner:
             for inputs, targets, teacher_logits in tqdm(distill_dl, desc="Distillation"):
                 inputs, targets = inputs.to(self.device), targets.to(self.device)
                 teacher_logits = teacher_logits.to(self.device)
-
-                #Si ottengono le soft labels pre-computate per il batch corrente
-                teacher_logits = teacher_logits[batch_idx].to(self.device)
 
                 #Si ottengono le predizioni dello student 
                 student_logits = self.student(inputs)
@@ -286,12 +282,12 @@ class Distillery_Runner:
                 #e si moltiplica per un valore che quantifica la sicurezza del teacher
                 #sulla data previsione.
                 #Dunque se il teacher è molto sicuro e lo student sbaglia di molto,
-                #la loss avraà un valore considerevole
+                #la loss avrà un valore considerevole
 
                 #Si pesano le due loss per ottenere la loss finale e,
                 #come suggerito nel paper, associamo un peso più basso
                 #alle predizioni dello student
-                loss = (1 - self.a) * loss_hard + (self.a) * loss_soft
+                loss = (1 - self.a) * loss_hard + (self.a) * soft_loss
 
                 self.optimizer.zero_grad()
                 loss.backward()
@@ -310,8 +306,8 @@ class Distillery_Runner:
 
             if self.logger:
                 self.logger.log_metrics({
-                    "distill/loss": loss_avg,
-                    "distill/accuracy": acc
+                    "distill/loss":  distill_loss,
+                    "distill/accuracy": distill_accuracy 
                 }, step=epoch)
 
         return distill_losses, distill_accuracies

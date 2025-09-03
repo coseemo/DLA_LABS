@@ -121,9 +121,9 @@ class CIFAR10_DataLoader:
 
 
     #Crea un dataloader per la distillazione usando i dati originali e i logits del teacher.
-    def create_distillation_dataloader(self, original_data, teacher_logits):
+    def create_distillation_dataloader(self, original_dataloader, teacher_logits):
         
-        distillation_dataset = DistillationDataset(original_data, teacher_logits)
+        distillation_dataset = Distillation_Dataset(original_dataloader, teacher_logits)
         
         distillation_loader = DataLoader(
             distillation_dataset,
@@ -135,17 +135,21 @@ class CIFAR10_DataLoader:
         return distillation_loader
         
         
-#Override del dataset per la distillazione
-class Distillation_Dataset(Dataset):
+class Distillation_Dataset(Dataset): 
     
-    def __init__(self, base_dataset, teacher_logits):
-        self.base_dataset = base_dataset
-        self.teacher_logits = teacher_logits
+    def __init__(self, base_dataloader, teacher_logits):
+        #Convertiamo il dataloader in lista di esempi
+        self.examples = []
+        for batch_idx, (inputs, targets) in enumerate(base_dataloader):
+            batch_logits = teacher_logits[batch_idx]
+            
+            #Aggiungiamo ogni esempio del batch
+            for i in range(len(inputs)):
+                self.examples.append((inputs[i], targets[i], batch_logits[i]))
 
     def __getitem__(self, index):
-        x, y = self.base_dataset[index]
-        teacher_logit = self.teacher_logits[index]
-        return x, y, teacher_logit
+        return self.examples[index]
 
     def __len__(self):
-        return len(self.base_dataset)
+        return len(self.examples)
+

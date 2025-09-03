@@ -10,9 +10,9 @@ model:
   type: "MLP"
   params:
     input_size: 784 #28*28 per MNIST
-    layers_dim: 32 #64 #128
+    layers_dim: 128 #32 #64 #128
     class_num: 10
-    hidden_layers_num: 10 #20 #40
+    hidden_layers_num: 40 #10 #20 #40
     residual: false
     activation: "ReLU"
     dropout: 0.0

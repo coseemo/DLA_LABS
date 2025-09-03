@@ -15,8 +15,8 @@ model:
     hidden_layers_num: 2  #Parametro che verrà sovrascritto in esecuzione (prove su profofndità)
     residual: false  #Parametro che verrà sovrascritto in esecuzione (prove su connessioni residuali)
     activation: "ReLU"
-    dropout: 0.2
-    batch_norm: true
+    dropout: 0.0
+    batch_norm: false
 
 training:
   epochs: 30
@@ -26,7 +26,6 @@ training:
   scheduler: "CosineAnnealingLR"
 
 experiment:
-  widths: [16, 32, 64, 128] #Varie ampiezze di test
   depths: [5, 10, 20, 40]  #Varie profondità di test
   analyze_gradients: true
 
