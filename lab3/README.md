@@ -102,7 +102,7 @@ I also try to creating some chains like these:
     Catena 4: comunale -> imposta -> pagare -> cifra -> denaro -> usare
     Catena 5: diocesano -> palazzo -> popolare -> canzone -> d'autore -> quadro
 
-I then applied LoRa and fine-tuned the model.
+Then, I finetuned the model
 
 ### Results
 
