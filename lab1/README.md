@@ -109,15 +109,16 @@ In the second exercise, we were asked to update our MLP baseline to add the poss
 
 |  | loss | accuracy| 
 |--|--|--|
-| training |![train_loss]()   | ![train_acc]()
-| validation |![val_loss]()   | ![val_acc]()
+| test |![train_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/tl.png)   | ![train_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/ta.png)
+| validation |![val_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/vl.png)   | ![val_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/va.png)
 
 This can also be explained by analyzing the gradient plot: it is indeed evident that, without residual connections, the model suffers from the vanishing gradient phenomenon.
 
-|  | loss | accuracy| 
+|  | nores | res| 
 |--|--|--|
-| training |![train_loss]()   | ![train_acc]()
-| validation |![val_loss]()   | ![val_acc]()
+| depth 10 |![nores10](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/10f.png)   | ![res10](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/10t.png)
+| depth 40 |![nores40](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/40f.png)   | ![res40](![https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/40t.png]()
+)
 ## Experiment 1.3
 ### Parameters
 To run this experiment use:
@@ -163,8 +164,9 @@ The commented parameters are the ones used for the various runs.
 In the third exercise, we were asked to replicate the experiments performed on the MLP, but this time on a CNN using CIFAR10. To do this, I used the implementation of PyTorch’s BasicBlock and ResNet as suggested by the exercise instructions, making it slightly lighter and enabling the choice of whether to use skip connections or not. Analyzing the plots, we can see that at low depths, not only do residual connections not improve performance, but they can even worsen it. The same behavior occurs when the CNN has a very high depth. However, when the CNN has a depth greater than 8 and less than 32, noticeable improvements can be observed.
 |  | loss | accuracy| 
 |--|--|--|
-| training |![train_loss]()   | ![train_acc]()
-| validation |![val_loss]()   | ![val_acc]()
+| training |![train_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tloss(1).png)   | ![train_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/acc.png)
+| validation |![val_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/vallos.png)   | ![val_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tracc.png)
+| test | ![test_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tloss.png) | ![test_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tacc.png)
 
 
 ## Experiment 2.2
@@ -248,7 +250,8 @@ For the last exercise, I chose to implement the distillation technique following
 
 Then I tried to run more experiments by modifying $\alpha$, which is the weight of the losses: as the paper states, increasing $\alpha$ leads to better performance.
 
-![train_loss]() 
+![test_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/4/loss.png) 
+![test_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/4/acc.png) 
 
 The performance improvement of the student was approximately:
 
