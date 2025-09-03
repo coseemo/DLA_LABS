@@ -55,8 +55,8 @@ The first exercise focused on testing the MLP implemented on the MNIST dataset, 
 
 |  | loss | accuracy| 
 |--|--|--|
-| training |![train_loss]()   | ![train_acc]()
-| validation |![val_loss]()   | ![val_acc]()
+| training |![train_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/1/W%26B%20Chart%2003_09_2025%2C%2012_50_07.png)   | ![train_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/1/W%26B%20Chart%2003_09_2025%2C%2012_50_45.png)
+| validation |![val_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/1/W%26B%20Chart%2003_09_2025%2C%2012_50_54.png)   | ![val_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/1/W%26B%20Chart%2003_09_2025%2C%2012_51_03.png)
 
 ## Experiment 1.2
 ### Parameters
