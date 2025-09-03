@@ -243,20 +243,20 @@ For the last exercise, I chose to implement the distillation technique following
     -   Create a dataloader combining inputs, true labels, and teacher logits.
         
     -   Train the student using a combined loss:  
-        loss = (1−$$\alpha$$) * hard_loss + $$\alpha$$ * soft_loss  
+        loss = (1−alpha) * hard_loss + alpha * soft_loss  
         where `hard_loss` = CrossEntropy on true labels and `soft_loss` = KL Divergence with teacher logits.
         
 -   Evaluation: Test the distilled student, compare accuracy with teacher and baseline student, and check parameter reduction.
 
-Then I tried to run more experiments by modifying $$\alpha$$, which is the weight of the losses: as the paper states, increasing $$\alpha$$ leads to better performance.
+Then I tried to run more experiments by modifying alpha, which is the weight of the losses: as the paper states, increasing alpha leads to better performance.
 
 ![test_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/4/loss.png) 
 ![test_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/4/acc.png) 
 
 The performance improvement of the student was approximately:
 
- - **2,4%** per $$\alpha$$ = **0.7**
- - **3,2%** per $$\alpha$$ = **0.8**
- - **2,8%** per $$\alpha$$ = **0.9**
+ - **2,4%** per alpha = **0.7**
+ - **3,2%** per alpha = **0.8**
+ - **2,8%** per alpha = **0.9**
 
 The reduction in the number of parameters was approximately **78%**.
