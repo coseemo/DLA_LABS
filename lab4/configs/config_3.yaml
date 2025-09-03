@@ -1,0 +1,23 @@
+seed: 99
+
+device: auto
+
+data:
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2023, 0.1994, 0.2010]
+
+training:
+  lr: 0.001
+  epochs: 50
+
+fgsm:
+  epsilons: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+
+jarn:
+  adv_weight: 1                   
+  epsilon: 0.031                     
+  disc_opt_lr: 0.008
+  start_ratio: 0.75                  #a che percentuale si inizia a utilizzare jarn
+
+logging:
+  project_name: "Lab4-OOD_Detection"
