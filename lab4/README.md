@@ -161,7 +161,7 @@ For these experiment I use this configuration, that can be found in `/configs/co
     fgsm:
       epsilons_cnn: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
       epsilons_ae: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
-      train_epsilon: 0.03                 
+      train_epsilon: null                  #si può provare con epsilon fissato ed epsilon casuale                
     
     logging:
       project_name: "Lab4-OOD_Detection"
