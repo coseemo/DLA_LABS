@@ -3,7 +3,7 @@
 
 ## Plots
 All the plots can be found here:
-- **lab3:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB1-CNN?nw=nwusercosimoborghini1]
+- **lab3:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB3-Transformes?nw=nwusercosimoborghini1]
 
 [If you expand the runs, you can see which parameters i used for each run]
 
