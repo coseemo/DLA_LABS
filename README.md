@@ -7,7 +7,7 @@ Repository that contains the three laboratories for the Deep Learning Applicatio
 
  - `lab1/`: MLP, CNN, Residual Connections and Distillation.
  - `lab3/`: Transformers, Fine-Tuning, LoRa and exercise 3.3.
- - `lab4/`: FGSM, JARN
+ - `lab4/`: OOD, FGSM, JARN
  
  In each project's folder, you can found:
  - README file in which I show and explain the made experiments and the obtained results
