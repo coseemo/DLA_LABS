@@ -17,8 +17,8 @@ To run this experiment use:
     python main.py --experiment pretrain
 
 For these experiment I use this configuration, that can be found in `/configs/config_pretrain.yaml`:
-    seed: 99
     
+    seed: 99
     device: cuda
     
     data:
@@ -99,7 +99,7 @@ For these experiment I use this configuration, that can be found in `/configs/co
 
  
 
-       seed: 6
+    seed: 6
     
     device: auto
     
@@ -161,7 +161,7 @@ For these experiment I use this configuration, that can be found in `/configs/co
     fgsm:
       epsilons_cnn: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
       epsilons_ae: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
-      train_epsilon: 0.03
+      train_epsilon: 0.03                 
     
     logging:
       project_name: "Lab4-OOD_Detection"
