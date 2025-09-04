@@ -1,11 +1,93 @@
+
 # Laboratory 4: OOD, FGSM, JARN
 
 
 ## Plots
 All the plots can be found here:
+- `plots`: []
 - **lab4:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB1-CNN?nw=nwusercosimoborghini1]
 
+
 [If you expand the runs, you can see which parameters i used for each run]
+
+## Pretraining
+### Parameters
+To run this experiment use:
+
+    python main.py --experiment pretrain
+
+For these experiment I use this configuration, that can be found in `/configs/config_pretrain.yaml`:
+    seed: 99
+    
+    device: cuda
+    
+    data:
+      batch_size: 128
+      validation_split: 0.2
+      num_workers: 4
+      mean: [0.4914, 0.4822, 0.4465]
+      std: [0.2023, 0.1994, 0.2010]
+    
+    model:
+      path: "models/cifar10_CNN.pth"  #"models/cifar10_CNN.pth", "models/cifar10_CNNplus.pth", "models/cifar10_Autoencoder.pth"
+    
+    train:
+      criterion: "CrossEntropyLoss"                #per le cnn "CrossEntropyLoss" per gli autoencoder "MSELoss"
+      optimizer: "Adam"
+      criterion_params: null                       #null per le cnn, {"reduction":"none"} per gli autoencoder
+      lr: 0.001
+          epochs: 200                      #cnn:200 cnnplus:50 autoencoder:200
+          scheduler: "CosineAnnealingLR"
+    
+    logging:
+      project_name: "Lab4-OOD_Detection"
+### Results
+-   **CNN**
+    
+    -   Simpler architecture
+        
+    -   Converges in ~200 epochs
+        
+    -   Uses Adam optimizer (lr=0.0001) with cosine annealing scheduler
+        
+    -   Achieves reasonable accuracy, but lower than CNNplus
+    
+    
+|  | accuracy | loss
+|--|--|--
+| train | ![trainacc]() |![trainloss]()
+| val |![valacc]() |![vallos]()
+|test| ![testacc]()|![testloss]()
+        
+-   **CNNplus**
+    
+    -   More expressive and stable architecture
+        
+    -   Converges faster (~50 epochs)
+        
+    -   Uses Adam optimizer (lr=0.0001) with cosine annealing scheduler
+        
+    -   Achieves higher accuracy than CNN
+
+|  | accuracy | loss
+|--|--|--
+| train | ![trainacc]() |![trainloss]()
+| val |![valacc]() |![vallos]()
+|test| ![testacc]()|![testloss]()
+        
+-   **AutoEncoder**
+    
+    -   Trained for 200 epochs
+        
+    -   Uses Adam optimizer (lr=0.0001) with cosine annealing scheduler
+        
+    -   Loss function: Mean Squared Error (MSELoss) on reconstruction output
+
+|  | accuracy | loss
+|--|--|--
+| train | ![trainacc]() |![trainloss]()
+| val |![valacc]() |![vallos]()
+|test| ![testacc]()|![testloss]()
 
 ## Experiment 1
 ### Parameters
@@ -77,8 +159,8 @@ For these experiment I use this configuration, that can be found in `/configs/co
       scheduler: "CosineAnnealingLR"
     
     fgsm:
-      epsilons_cnn: [0.0, 0.01, 0.03, 0.05]
-      epsilons_ae: [0.0] #, 0.01, 0.03, 0.05]
+      epsilons_cnn: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
+      epsilons_ae: [0.0, 0.01, 0.02, 0.03, 0.04, 0.05]
       train_epsilon: 0.03
     
     logging:
@@ -89,7 +171,7 @@ For these experiment I use this configuration, that can be found in `/configs/co
 #### CNN
 The histograms indicate that the baseline model struggles to clearly differentiate between real and fake data. However, its performance noticeably improves when FGSM is incorporated as a data augmentation technique during training.
 
-Using FGSM in this way enhances OOD (Out-of-Distribution) detection, particularly when a random epsilon between 0.01 and 0.15 is applied.
+Using FGSM in this way improves OOD (Out-of-Distribution) detection. I tested the model using small epsilon values, given the nature of CIFAR-10, and to facilitate comparison with the experiments using JARN
 
 Despite this improvement, OOD detection remains challenging. The histograms reveal that the distributions of real and fake data still partially overlap, meaning complete separation has not been achieved.
 
@@ -97,26 +179,37 @@ Comparing scoring functions, there is no clear or consistent advantage in using 
 
 This model also appears less stable than the CNNplus model, both in terms of OOD detection and during the training process, as reflected in the results. Both models were trained with the Adam optimizer (learning rate 0.0001) and a cosine annealing scheduler.
 
-|  |  |
-|--|--|
-|  |  |
+|  | baseline | trained|
+|--|--|--|
+| roc | ![rcb]() |![rct]() |
+|precision-recall|![prb]() |![prt]() |
+|histogram|![hb]() |![ht]() |
+|score|![sb]() |![st]() |
+| conf | ![cb]() |![ct]() |
+|mse|![mb]() |![mt]() |
+
 
 
 #### CNNplus
 
-In terms of raw test set accuracy, the CNNplus model clearly outperforms CNN, as reflected in the confusion matrices. It also demonstrates superior performance on ROC and Precision-Recall curves compared to CNN2.
+In terms of raw test set accuracy, the CNNplus model clearly outperforms CNN, as reflected in the confusion matrices. It also demonstrates superior performance on ROC and Precision-Recall curves compared to CNN.
 
 The histograms show that the baseline model struggles to differentiate between real and fake data. However, its performance improves when FGSM is employed as a data augmentation technique during training.
 
-Using a fixed epsilon of 0.05, FGSM alone is insufficient for effectively separating the two distributions. Better results are observed when training with either a higher fixed epsilon or a random epsilon sampled between 0.01 and 0.15, with the latter providing the best anomaly detection performance.
+Using FGSM in this way improves OOD (Out-of-Distribution) detection. I tested the model using small epsilon values, given the nature of CIFAR-10, and to facilitate comparison with the experiments using JARN
 
 Overall, the max_softmax score (with temperature fixed at 1000) generally yields better results than using raw logits directly.
 
 That said, there is no consistent advantage between max_logit and max_softmax as scoring functions—each can outperform the other in specific cases, as shown in the plots.
 
-|  |  |
-|--|--|
-|  |  |
+|  | baseline | trained|
+|--|--|--|
+| roc | ![rcb]() |![rct]() |
+|precision-recall|![prb]() |![prt]() |
+|histogram|![hb]() |![ht]() |
+|score|![sb]() |![st]() |
+| conf | ![cb]() |![ct]() |
+|mse|![mb]() |![mt]() |
 
 
 #### Autoencoder
@@ -126,10 +219,12 @@ In general, the AutoEncoder model is more robust and better suited for anomaly d
 Training the model with FGSM as a data augmentation technique sometimes leads to slightly better performance, but the improvement is marginal in the context of this experiment.
 
 In all cases, the network appears to detect the difference between real and fake data much more effectively than CNN-based models.
-
-|  |  |
-|--|--|
-|  |  |
+|  | baseline | trained|
+|--|--|--|
+| roc | ![rcb]() |![rct]() |
+|precision-recall|![prb]() |![prt]() |
+|histogram|![hb]() |![ht]() |
+|score|![sb]() |![st]() |
 
 ## Experiment 3
 ### Parameters
@@ -173,9 +268,9 @@ JARN is designed to improve neural network robustness against adversarial attack
 -   **Combined loss**  - we use a combination of the standard and adversarial loss for improve our model.
 
 I used the hyperparameters of the paper and what is observed is a slight increase in the model's resilience: indeed, while the accuracy of the baseline model and the model trained with FGSM drops quickly, with JARN this behavior is mitigated, leading to a slower decrease, as can be seen in the graphs.
-|  |  |
-|--|--|
-|  |  |
+|  | baseline | fgsm| jarn|
+|--|--|--| --|
+|mse|![mb]() |![mf]() |![mj]()
 
 
 
