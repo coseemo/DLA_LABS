@@ -2,7 +2,6 @@ datasets==3.6.0
 matplotlib==3.10.6
 numpy==2.3.2
 peft==0.17.0
-PyYAML==6.0.1
 PyYAML==6.0.2
 scikit_learn==1.7.1
 torch==2.6.0+cpu
@@ -10,3 +9,4 @@ torchvision==0.21.0+cpu
 tqdm==4.66.5
 transformers==4.55.2
 wandb==0.21.3
+beautifulsoup4==4.12.2
