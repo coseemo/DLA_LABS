@@ -17,12 +17,12 @@ setup:
   optimizer: "Adam"
   criterion_params: {"reduction":"none"}                       #null per le cnn, {"reduction":"none"} per gli autoencoder
   lr: 0.0001
-  epochs: 1                          #cnnplus:50, cnn:200, autoencoder:200
+  epochs: 200                          #cnnplus:50, cnn:200, autoencoder:200
   scheduler: "CosineAnnealingLR"
 
 fgsm:
   epsilons_cnn: [0.0, 0.01, 0.03, 0.05]
-  epsilons_ae: [0.0] #, 0.01, 0.03, 0.05]
+  epsilons_ae: [0.0, 0.01, 0.03, 0.05]
   train_epsilon: 0.03
 
 logging:
