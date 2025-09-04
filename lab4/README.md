@@ -5,7 +5,7 @@
 ## Plots
 All the plots can be found here:
 - `plots`: []
-- **lab4:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB1-CNN?nw=nwusercosimoborghini1]
+- **lab4:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB4-OOD_Detection?nw=nwusercosimoborghini1]
 
 
 [If you expand the runs, you can see which parameters i used for each run]
