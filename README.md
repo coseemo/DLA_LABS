@@ -14,9 +14,9 @@ Repository that contains the three laboratories for the Deep Learning Applicatio
  - `configs/` directory that contains the .yaml configuration files that i used for experiments 
 
 These are the wandb repositories for each lab:
--   **lab1:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB1-CNN?nw=nwusercosimoborghini1](https://wandb.ai/AI-UNIFI/DLA_LAB_1?nw=nwusermirkobicchierai)
--    **lab3:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB3-Transformers?nw=nwusercosimoborghini1](https://wandb.ai/AI-UNIFI/DLA_LAB_1?nw=nwusermirkobicchierai)
--    **lab4:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/Lab4-OOD_Detection?nw=nwusercosimoborghini1](https://wandb.ai/AI-UNIFI/DLA_LAB_1?nw=nwusermirkobicchierai)
+-   **lab1:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB1-CNN?nw=nwusercosimoborghini1]
+-    **lab3:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB3-Transformers?nw=nwusercosimoborghini1]
+-    **lab4:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/Lab4-OOD_Detection?nw=nwusercosimoborghini1]
 
 ## Setup
 
