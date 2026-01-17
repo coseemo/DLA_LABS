@@ -1,5 +1,7 @@
 # Laboratory 3: Transformers, Fine-Tuning, Lora
 
+##OrganizationMost of the code is contained in the files **esercizio1.py** and **esercizi2e3.py**; in the notebook **ChainReaction.ipynb** you can find an attempt at exercise 3.3.
+
 
 ## Plots
 All the plots can be found here:
@@ -106,7 +108,7 @@ Then, I finetuned the model
 
 ### Results
 
-The result is not excellent; the words are often "unexpected" and sometimes are not even Italian words. In my opinion, the reasons for this "failure" are: the difficulty of automatically—or manually—creating a dataset that must be based on phrases, proverbs, and idiomatic expressions, and also resource limitations (no GPU).
+The result is not excellent; the words are often "unexpected" and sometimes are not even italian words. In my opinion, the reasons for this "failure" are: the difficulty of automatically—or manually—creating a dataset that must be based on phrases, proverbs, and idiomatic expressions, and also resource limitations (no GPU).
 
 Nevertheless, if you want to have some "fun," you can go to the end of the `ChainReaction` notebook. By running the last cell, you can provide a word and an initial to the model and see the top 5 predictions it generates.
 
