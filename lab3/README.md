@@ -1,6 +1,6 @@
 # Laboratory 3: Transformers, Fine-Tuning, Lora
 
-##Organization
+## Organization
 Most of the code is contained in the files **esercizio1.py** and **esercizi2e3.py**; in the notebook **ChainReaction.ipynb** you can find an attempt at exercise 3.3.
 
 
