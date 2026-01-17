@@ -1,6 +1,9 @@
 
 # Laboratory 1: MLP, CNN, Residual Conections and Distillation
 
+## Organization
+Most of the code resides in two files: **main.py**, which contains the experiment functions, and **runners.py**, which contains the majority of the program’s logic.
+
 
 ## Plots
 All the plots can be found here:
@@ -18,7 +21,7 @@ For these experiment I use this configuration, that can be found in `/configs/co
 
  
 
-        #Esperimento 1.1: MLP con MNIST
+    #Esperimento 1.1: MLP con MNIST
     seed: 42
     
     data:
@@ -118,7 +121,7 @@ This can also be explained by analyzing the gradient plot: it is indeed evident 
 |--|--|--|
 | depth 10 |![nores10](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/10f.png)   | ![res10](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/10t.png)
 | depth 40 |![nores40](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/40f.png)   | ![res40](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/40t.png)
-)
+
 ## Experiment 1.3
 ### Parameters
 To run this experiment use:
@@ -127,7 +130,7 @@ To run this experiment use:
 
 For these experiment i use this configuration, that can be found in `/configs/config_exp1_3.yaml`:
 
-      #Esperimento 1.3: CNN con e senza connessioni residuali su CIFAR-10
+    #Esperimento 1.3: CNN con e senza connessioni residuali su CIFAR-10
     seed: 42
     
     data:
