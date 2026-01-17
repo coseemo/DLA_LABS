@@ -106,7 +106,7 @@ Then, I finetuned the model
 
 ### Results
 
-The result is not excellent; the words are often "unexpected" and sometimes are not even Italian words. In my opinion, the reasons for this "failure" are: the difficulty of automatically—or manually—creating a dataset that must be based on phrases, proverbs, and idiomatic expressions, and also resource limitations, since I conducted this experiment in the middle of summer without access to a GPU.
+The result is not excellent; the words are often "unexpected" and sometimes are not even Italian words. In my opinion, the reasons for this "failure" are: the difficulty of automatically—or manually—creating a dataset that must be based on phrases, proverbs, and idiomatic expressions, and also resource limitations (no GPU).
 
 Nevertheless, if you want to have some "fun," you can go to the end of the `ChainReaction` notebook. By running the last cell, you can provide a word and an initial to the model and see the top 5 predictions it generates.
 
