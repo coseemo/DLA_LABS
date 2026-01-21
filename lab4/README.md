@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Laboratory 4: OOD, FGSM, Targeted FGSM
 
 ## Plots
