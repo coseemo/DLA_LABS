@@ -829,4 +829,14 @@ not.
 
 #### CNN
 
+|     |     |
+|-----|-----|
+| ![FGSM eps](plots/es3/CNN/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNN_0.05/FGSM_SUCCESS_RATE_TARGET_0_.png)|
+|  ![FGSM eps](plots/es3/CNN_0.1/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNN_None/FGSM_SUCCESS_RATE_TARGET_0_.png) |
+
 #### CNNplus
+
+|     |     |
+|-----|-----|
+| ![FGSM eps](plots/es3/CNNplus/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNNplus_0.05/FGSM_SUCCESS_RATE_TARGET_0_.png)|
+|  ![FGSM eps](plots/es3/CNNplus_0.1/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNNplus_None/FGSM_SUCCESS_RATE_TARGET_0_.png) |
