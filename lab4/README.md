@@ -329,8 +329,8 @@ The commented parameters are the ones used for the various runs.
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN/CNN_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN/CNN_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN/CNN_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN/CNN_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN/CNN_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN/CNN_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN/CNN_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN/CNN_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN/CNN_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN/CNN_temp:1000__softmax_Fake_data.png) |
@@ -355,8 +355,8 @@ training</strong></summary>
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__softmax_Fake_data.png) |
@@ -384,8 +384,8 @@ training</strong></summary>
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__softmax_Fake_data.png) |
@@ -414,8 +414,8 @@ training</strong></summary>
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN_None/CNN_None_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_None/CNN_None_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_None/CNN_None_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_None/CNN_None_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN_None/CNN_None_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN_None/CNN_None_temp:1000__softmax_Fake_data.png) |
@@ -484,8 +484,8 @@ shown in the plots.
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus/CNNplus_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus/CNNplus_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus/CNNplus_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus/CNNplus_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus/CNNplus_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus/CNNplus_temp:1000__softmax_Fake_data.png) |
@@ -510,8 +510,8 @@ training</strong></summary>
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__softmax_Fake_data.png) |
@@ -539,8 +539,8 @@ training</strong></summary>
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__softmax_Fake_data.png) |
@@ -569,8 +569,8 @@ training</strong></summary>
 | Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__precision_recall_curve_max_softmax.png) |
 | ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__roc_curve_max_logit.png) |
 | ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__roc_curve_max_softmax.png) |
-| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp_1000_score_hist_max_logit.png) |
-| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp_1000_score_hist_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000_score_hist_max_softmax.png) |
 | Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__score_max_logit.png) |
 | Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__score_max_softmax.png) |
 | Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__softmax_Fake_data.png) |
