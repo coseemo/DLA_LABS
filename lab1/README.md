@@ -9,8 +9,6 @@ Most of the code resides in two files: **main.py**, which contains the experimen
 All the plots can be found here:
 - **lab1:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB1-CNN?nw=nwusercosimoborghini1]
 
-[If you expand the runs, you can see which parameters i used for each run]
-
 ## Experiment 1.1
 ### Parameters
 To run this experiment use:
