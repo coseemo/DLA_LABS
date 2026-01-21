@@ -1,0 +1,138 @@
+#Configurazioni globali
+global_configs:
+
+    seed: 99
+    device: auto
+    
+    batch_size: 256
+    validation_split: 10
+    num_workers: 2
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.2470, 0.2435, 0.2616]
+    
+    project_name: "Lab4-OOD_Detection"
+
+#Configurazione per il pretraining
+pretraining_configs:
+
+  pretrain_cnn_plus: true
+  pretrain_autoencoder: true
+  pretrain_cnn: true
+  
+  #Lista dei modelli CNN 
+  cnn_models:
+  
+    - name: "CNN"
+      path: "models/CNN.pth"
+      fgsm: false
+      epochs: 200
+      epsilon: 0
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNN_0.05"
+      path: "models/CNN_0.05.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.05
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNN_0.1"
+      path: "models/CNN_0.1.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.1
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNN_None"
+      path: "models/CNN_None.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: null
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+
+  #Lista modelli CNNplus 
+  cnn_plus_models:  
+  
+    - name: "CNNplus"
+      path: "models/CNNplus.pth"
+      fgsm: false
+      epochs: 50
+      epsilon: 0
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNNplus_0.05"
+      path: "models/CNNplus_0.05.pth"
+      fgsm: true
+      epochs: 50
+      epsilon: 0.05
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNNplus_0.1"
+      path: "models/CNNplus_0.1.pth"
+      fgsm: true
+      epochs: 50
+      epsilon: 0.1
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNNplus_None"
+      path: "models/CNNplus_None.pth"
+      fgsm: true
+      epochs: 50
+      epsilon: null
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+  
+  #Lista dei modelli Autoencoder 
+  autoencoder_models:
+  
+    - name: "Autoencoder"
+      path: "models/Autoencoder.pth"
+      fgsm: false
+      epochs: 200
+      epsilon: 0
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "Autoencoder_0.05"
+      path: "models/Autoencoder_0.05.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.05
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "Autoencoder_0.1"
+      path: "models/Autoencoder_0.1.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.1
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "Autoencoder_None"
+      path: "models/Autoencoder_None.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: null
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+

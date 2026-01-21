@@ -1,0 +1,567 @@
+CNN
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [00:32<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 8974
+Originally correct:   5494 (61.2%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▌  | 1/6 [01:04<02:40, 32.12s/it, epsilon=0.050, success=86.36%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 8974
+Originally correct:   5494 (61.2%)
+Attack successes:     7750 (86.4%)
+Success from correct: 84.7%
+============================================================
+
+[Targeted FGSM Testing]:  33%|█  | 2/6 [01:37<02:09, 32.34s/it, epsilon=0.075, success=91.58%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 8974
+Originally correct:   5494 (61.2%)
+Attack successes:     8218 (91.6%)
+Success from correct: 90.4%
+============================================================
+
+[Targeted FGSM Testing]:  50%|█▌ | 3/6 [02:09<01:37, 32.38s/it, epsilon=0.100, success=92.49%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 8974
+Originally correct:   5494 (61.2%)
+Attack successes:     8300 (92.5%)
+Success from correct: 91.4%
+============================================================
+
+[Targeted FGSM Testing]:  67%|██ | 4/6 [02:40<01:04, 32.24s/it, epsilon=0.125, success=91.26%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 8974
+Originally correct:   5494 (61.2%)
+Attack successes:     8190 (91.3%)
+Success from correct: 89.8%
+============================================================
+
+[Targeted FGSM Testing]:  83%|██▌| 5/6 [03:12<00:32, 32.06s/it, epsilon=0.150, success=89.17%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 8974
+Originally correct:   5494 (61.2%)
+Attack successes:     8002 (89.2%)
+Success from correct: 87.6%
+============================================================
+
+[Targeted FGSM Testing]: 100%|███| 6/6 [03:12<00:00, 32.11s/it, epsilon=0.150, success=89.17%]
+Salvati 0 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 1 fallimenti
+Salvati 3 successi e 0 fallimenti
+Salvati 3 successi e 1 fallimenti
+Salvati 3 successi e 1 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNN/
+
+CNNplus
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [02:44<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 9004
+Originally correct:   5720 (63.5%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▎ | 1/6 [05:26<13:42, 164.56s/it, epsilon=0.050, success=80.58%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 9004
+Originally correct:   5720 (63.5%)
+Attack successes:     7255 (80.6%)
+Success from correct: 79.3%
+============================================================
+
+[Targeted FGSM Testing]:  33%|▋ | 2/6 [08:03<10:52, 163.08s/it, epsilon=0.075, success=86.62%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 9004
+Originally correct:   5720 (63.5%)
+Attack successes:     7799 (86.6%)
+Success from correct: 85.6%
+============================================================
+
+[Targeted FGSM Testing]:  50%|█ | 3/6 [10:43<08:01, 160.46s/it, epsilon=0.100, success=86.75%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 9004
+Originally correct:   5720 (63.5%)
+Attack successes:     7811 (86.8%)
+Success from correct: 85.8%
+============================================================
+
+[Targeted FGSM Testing]:  67%|█▎| 4/6 [13:24<05:20, 160.20s/it, epsilon=0.125, success=85.58%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 9004
+Originally correct:   5720 (63.5%)
+Attack successes:     7706 (85.6%)
+Success from correct: 84.2%
+============================================================
+
+[Targeted FGSM Testing]:  83%|█▋| 5/6 [15:55<02:40, 160.48s/it, epsilon=0.150, success=83.72%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 9004
+Originally correct:   5720 (63.5%)
+Attack successes:     7538 (83.7%)
+Success from correct: 82.2%
+============================================================
+
+[Targeted FGSM Testing]: 100%|██| 6/6 [15:55<00:00, 159.19s/it, epsilon=0.150, success=83.72%]
+Salvati 0 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 1 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNNplus/
+
+CNN_0.05
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [00:29<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 9098
+Originally correct:   4846 (53.3%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▌  | 1/6 [00:58<02:28, 29.77s/it, epsilon=0.050, success=25.61%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 9098
+Originally correct:   4846 (53.3%)
+Attack successes:     2330 (25.6%)
+Success from correct: 21.8%
+============================================================
+
+[Targeted FGSM Testing]:  33%|█  | 2/6 [01:27<01:57, 29.37s/it, epsilon=0.075, success=38.67%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 9098
+Originally correct:   4846 (53.3%)
+Attack successes:     3518 (38.7%)
+Success from correct: 35.5%
+============================================================
+
+[Targeted FGSM Testing]:  50%|█▌ | 3/6 [01:56<01:27, 29.16s/it, epsilon=0.100, success=47.82%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 9098
+Originally correct:   4846 (53.3%)
+Attack successes:     4351 (47.8%)
+Success from correct: 45.3%
+============================================================
+
+[Targeted FGSM Testing]:  67%|██ | 4/6 [02:25<00:58, 29.13s/it, epsilon=0.125, success=52.09%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 9098
+Originally correct:   4846 (53.3%)
+Attack successes:     4739 (52.1%)
+Success from correct: 50.0%
+============================================================
+
+[Targeted FGSM Testing]:  83%|██▌| 5/6 [02:54<00:29, 29.05s/it, epsilon=0.150, success=52.57%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 9098
+Originally correct:   4846 (53.3%)
+Attack successes:     4783 (52.6%)
+Success from correct: 51.4%
+============================================================
+
+[Targeted FGSM Testing]: 100%|███| 6/6 [02:54<00:00, 29.08s/it, epsilon=0.150, success=52.57%]
+Salvati 0 successi e 2 fallimenti
+Salvati 2 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 1 fallimenti
+Salvati 3 successi e 0 fallimenti
+Salvati 3 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNN_0.05/
+
+CNNplus_0.05
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [02:29<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 8965
+Originally correct:   5771 (64.4%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▎ | 1/6 [04:58<12:27, 149.60s/it, epsilon=0.050, success=43.28%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 8965
+Originally correct:   5771 (64.4%)
+Attack successes:     3880 (43.3%)
+Success from correct: 39.0%
+============================================================
+
+[Targeted FGSM Testing]:  33%|▋ | 2/6 [07:26<09:55, 148.93s/it, epsilon=0.075, success=59.14%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 8965
+Originally correct:   5771 (64.4%)
+Attack successes:     5302 (59.1%)
+Success from correct: 56.4%
+============================================================
+
+[Targeted FGSM Testing]:  50%|█ | 3/6 [09:55<07:26, 148.76s/it, epsilon=0.100, success=66.74%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 8965
+Originally correct:   5771 (64.4%)
+Attack successes:     5983 (66.7%)
+Success from correct: 64.7%
+============================================================
+
+[Targeted FGSM Testing]:  67%|█▎| 4/6 [12:31<04:57, 148.79s/it, epsilon=0.125, success=67.69%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 8965
+Originally correct:   5771 (64.4%)
+Attack successes:     6068 (67.7%)
+Success from correct: 66.3%
+============================================================
+
+[Targeted FGSM Testing]:  83%|█▋| 5/6 [15:11<02:31, 151.34s/it, epsilon=0.150, success=65.11%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 8965
+Originally correct:   5771 (64.4%)
+Attack successes:     5837 (65.1%)
+Success from correct: 63.5%
+============================================================
+
+[Targeted FGSM Testing]: 100%|██| 6/6 [15:11<00:00, 151.90s/it, epsilon=0.150, success=65.11%]
+Salvati 0 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 1 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNNplus_0.05/
+
+CNN_0.1
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [00:32<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 9024
+Originally correct:   5386 (59.7%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▋   | 1/6 [01:02<02:40, 32.05s/it, epsilon=0.050, success=1.96%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 9024
+Originally correct:   5386 (59.7%)
+Attack successes:     177 (2.0%)
+Success from correct: 1.8%
+============================================================
+
+[Targeted FGSM Testing]:  33%|█▎  | 2/6 [01:32<02:04, 31.14s/it, epsilon=0.075, success=1.03%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 9024
+Originally correct:   5386 (59.7%)
+Attack successes:     93 (1.0%)
+Success from correct: 1.0%
+============================================================
+
+[Targeted FGSM Testing]:  50%|██  | 3/6 [02:03<01:32, 30.68s/it, epsilon=0.100, success=0.79%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 9024
+Originally correct:   5386 (59.7%)
+Attack successes:     71 (0.8%)
+Success from correct: 0.7%
+============================================================
+
+[Targeted FGSM Testing]:  67%|██▋ | 4/6 [02:33<01:01, 30.86s/it, epsilon=0.125, success=0.71%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 9024
+Originally correct:   5386 (59.7%)
+Attack successes:     64 (0.7%)
+Success from correct: 0.6%
+============================================================
+
+[Targeted FGSM Testing]:  83%|███▎| 5/6 [03:03<00:30, 30.55s/it, epsilon=0.150, success=0.63%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 9024
+Originally correct:   5386 (59.7%)
+Attack successes:     57 (0.6%)
+Success from correct: 0.5%
+============================================================
+
+[Targeted FGSM Testing]: 100%|████| 6/6 [03:03<00:00, 30.63s/it, epsilon=0.150, success=0.63%]
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNN_0.1/
+
+CNNplus_0.1
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [02:45<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 8978
+Originally correct:   6007 (66.9%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▎ | 1/6 [05:29<13:48, 165.68s/it, epsilon=0.050, success=17.26%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 8978
+Originally correct:   6007 (66.9%)
+Attack successes:     1550 (17.3%)
+Success from correct: 16.5%
+============================================================
+
+[Targeted FGSM Testing]:  33%|█  | 2/6 [08:06<10:58, 164.52s/it, epsilon=0.075, success=1.17%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 8978
+Originally correct:   6007 (66.9%)
+Attack successes:     105 (1.2%)
+Success from correct: 0.8%
+============================================================
+
+[Targeted FGSM Testing]:  50%|█▌ | 3/6 [10:44<08:03, 161.14s/it, epsilon=0.100, success=1.11%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 8978
+Originally correct:   6007 (66.9%)
+Attack successes:     100 (1.1%)
+Success from correct: 0.9%
+============================================================
+
+[Targeted FGSM Testing]:  67%|██ | 4/6 [13:21<05:19, 159.89s/it, epsilon=0.125, success=5.57%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 8978
+Originally correct:   6007 (66.9%)
+Attack successes:     500 (5.6%)
+Success from correct: 5.0%
+============================================================
+
+[Targeted FGSM Testing]:  83%|██▌| 5/6 [15:58<02:38, 158.81s/it, epsilon=0.150, success=6.15%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 8978
+Originally correct:   6007 (66.9%)
+Attack successes:     552 (6.1%)
+Success from correct: 5.7%
+============================================================
+
+[Targeted FGSM Testing]: 100%|███| 6/6 [15:58<00:00, 159.67s/it, epsilon=0.150, success=6.15%]
+Salvati 0 successi e 2 fallimenti
+Salvati 3 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNNplus_0.1/
+
+CNN_Random
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [00:30<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 9036
+Originally correct:   5429 (60.1%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▋   | 1/6 [01:01<02:30, 30.05s/it, epsilon=0.050, success=3.64%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 9036
+Originally correct:   5429 (60.1%)
+Attack successes:     329 (3.6%)
+Success from correct: 3.6%
+============================================================
+
+[Targeted FGSM Testing]:  33%|█▎  | 2/6 [01:31<02:03, 30.90s/it, epsilon=0.075, success=2.39%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 9036
+Originally correct:   5429 (60.1%)
+Attack successes:     216 (2.4%)
+Success from correct: 2.4%
+============================================================
+
+[Targeted FGSM Testing]:  50%|██  | 3/6 [02:00<01:31, 30.38s/it, epsilon=0.100, success=2.22%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 9036
+Originally correct:   5429 (60.1%)
+Attack successes:     201 (2.2%)
+Success from correct: 2.3%
+============================================================
+
+[Targeted FGSM Testing]:  67%|██▋ | 4/6 [02:31<01:00, 30.09s/it, epsilon=0.125, success=2.04%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 9036
+Originally correct:   5429 (60.1%)
+Attack successes:     184 (2.0%)
+Success from correct: 2.1%
+============================================================
+
+[Targeted FGSM Testing]:  83%|███▎| 5/6 [03:02<00:30, 30.17s/it, epsilon=0.150, success=1.89%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 9036
+Originally correct:   5429 (60.1%)
+Attack successes:     171 (1.9%)
+Success from correct: 2.0%
+============================================================
+
+[Targeted FGSM Testing]: 100%|████| 6/6 [03:02<00:00, 30.37s/it, epsilon=0.150, success=1.89%]
+Salvati 0 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 0 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNN_None/
+
+CNNplus_None
+
+[Targeted FGSM Testing]:   0%|            | 0/6 [02:35<?, ?it/s, epsilon=0.000, success=0.00%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.0
+============================================================
+Total samples tested: 8967
+Originally correct:   6018 (67.1%)
+Attack successes:     0 (0.0%)
+Success from correct: 0.0%
+============================================================
+
+[Targeted FGSM Testing]:  17%|▌  | 1/6 [05:07<12:55, 155.11s/it, epsilon=0.050, success=7.55%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.05
+============================================================
+Total samples tested: 8967
+Originally correct:   6018 (67.1%)
+Attack successes:     677 (7.5%)
+Success from correct: 6.8%
+============================================================
+
+[Targeted FGSM Testing]:  33%|█  | 2/6 [07:57<10:12, 153.23s/it, epsilon=0.075, success=4.96%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.075
+============================================================
+Total samples tested: 8967
+Originally correct:   6018 (67.1%)
+Attack successes:     445 (5.0%)
+Success from correct: 4.4%
+============================================================
+
+[Targeted FGSM Testing]:  50%|█▌ | 3/6 [10:47<08:02, 160.90s/it, epsilon=0.100, success=4.46%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.1
+============================================================
+Total samples tested: 8967
+Originally correct:   6018 (67.1%)
+Attack successes:     400 (4.5%)
+Success from correct: 4.0%
+============================================================
+
+[Targeted FGSM Testing]:  67%|██ | 4/6 [13:30<05:29, 164.82s/it, epsilon=0.125, success=3.98%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.125
+============================================================
+Total samples tested: 8967
+Originally correct:   6018 (67.1%)
+Attack successes:     357 (4.0%)
+Success from correct: 3.7%
+============================================================
+
+[Targeted FGSM Testing]:  83%|██▌| 5/6 [16:13<02:43, 163.90s/it, epsilon=0.150, success=3.91%]
+============================================================                                  
+TARGETED ATTACK SUMMARY - Target Class: 0 | ε=0.15
+============================================================
+Total samples tested: 8967
+Originally correct:   6018 (67.1%)
+Attack successes:     351 (3.9%)
+Success from correct: 3.7%
+============================================================
+
+[Targeted FGSM Testing]: 100%|███| 6/6 [16:13<00:00, 162.31s/it, epsilon=0.150, success=3.91%]
+Salvati 0 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Salvati 1 successi e 2 fallimenti
+Targeted FGSM experiment completed. Plots saved in: plots/es3/CNNplus_None/

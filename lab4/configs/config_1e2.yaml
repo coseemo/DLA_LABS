@@ -1,0 +1,68 @@
+seed: 99
+device: auto
+
+data:
+
+  batch_size: 256
+  validation_split: 10
+  num_workers: 2
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2023, 0.1994, 0.2010]
+
+#Configurazione per l'esperimento 1 e 2
+models:
+
+  test_cnn: false
+  test_autoencoder: true
+  
+  #Lista dei modelli CNN da testare
+  cnn_models:
+  
+    - name: "CNN"
+      path: "models/CNN.pth"
+      
+    - name: "CNNplus"
+      path: "models/CNNplus.pth"
+      
+    - name: "CNN_0.05"
+      path: "models/CNN_0.05.pth"
+      
+    - name: "CNNplus_0.05"
+      path: "models/CNNplus_0.05.pth"
+      
+    - name: "CNN_0.1"
+      path: "models/CNN_0.1.pth"
+      
+    - name: "CNNplus_0.1"
+      path: "models/CNNplus_0.1.pth"
+      
+    - name: "CNN_None"
+      path: "models/CNN_None.pth"
+      
+    - name: "CNNplus_None"
+      path: "models/CNNplus_None.pth"
+  
+  #Lista dei modelli Autoencoder da testare
+  autoencoder:
+    - name: "Autoencoder"
+      path: "models/Autoencoder.pth"
+      
+    - name: "Autoencoder_0.05"
+      path: "models/Autoencoder_0.05.pth"
+      
+    - name: "Autoencoder_0.1"
+      path: "models/Autoencoder_0.1.pth"
+      
+    - name: "Autoencoder_None"
+      path: "models/Autoencoder_None.pth"
+
+#Parametri per la valutazione
+evaluation:
+  temperature: 1000
+
+fgsm:
+  epsilons_cnn: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15]
+  epsilons_ae: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15]
+
+logging:
+  project_name: "Lab4-OOD_Detection"

@@ -1,0 +1,15 @@
+import wandb
+
+class Logger:
+    def __init__(self, project_name="LAB1-CNN", run_name=None, config=None):
+        self.run = wandb.init(
+            project=project_name,
+            name=run_name,
+            config=config
+        )
+
+    def log_metrics(self, metrics):
+        wandb.log(metrics)   
+        
+    def finish(self):
+        wandb.finish()

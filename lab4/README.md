@@ -1,0 +1,1085 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Laboratory 4: OOD, FGSM, Targeted FGSM
+
+## Plots
+
+All the plots can be found here: - `plots`: [] - **lab4:**
+[<https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB4-OOD_Detection?nw=nwusercosimoborghini1>]
+
+[If you expand the runs, you can see which parameters i used for each
+run]
+
+## Pretraining
+
+### Parameters
+
+To run this experiment use:
+
+```         
+python main.py --experiment pretrain
+```
+
+For these experiment I use this configuration, that can be found in
+`/configs/config_pretrain.yaml`:
+
+```         
+#Configurazioni globali
+global_configs:
+
+    seed: 99
+    device: auto
+    
+    batch_size: 256
+    validation_split: 10
+    num_workers: 2
+    mean: [0.4914, 0.4822, 0.4465]
+    std: [0.2470, 0.2435, 0.2616]
+    
+    project_name: "Lab4-OOD_Detection"
+
+#Configurazione per il pretraining
+pretraining_configs:
+
+  #true/false permette di testare solo alcuni
+  #dei modelli elencati
+  
+  pretrain_cnn_plus: true
+  pretrain_autoencoder: true
+  pretrain_cnn: true
+  
+  #Lista dei modelli CNN 
+  cnn_models:
+  
+  #NOTA: 
+  #fgsm gestisce l'allenamento con o senza esempi adv
+  #quando epsilon = null significa che epsilon è 
+  #un valore random tra (0.01-0.15)
+  
+    - name: "CNN"
+      path: "models/CNN.pth"
+      fgsm: false
+      epochs: 200
+      epsilon: 0
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNN_0.05"
+      path: "models/CNN_0.05.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.05
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNN_0.1"
+      path: "models/CNN_0.1.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.1
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNN_None"
+      path: "models/CNN_None.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: null
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+
+  #Lista modelli CNNplus 
+  cnn_plus_models:  
+  
+    - name: "CNNplus"
+      path: "models/CNNplus.pth"
+      fgsm: false
+      epochs: 50
+      epsilon: 0
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNNplus_0.05"
+      path: "models/CNNplus_0.05.pth"
+      fgsm: true
+      epochs: 50
+      epsilon: 0.05
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNNplus_0.1"
+      path: "models/CNNplus_0.1.pth"
+      fgsm: true
+      epochs: 50
+      epsilon: 0.1
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "CNNplus_None"
+      path: "models/CNNplus_None.pth"
+      fgsm: true
+      epochs: 50
+      epsilon: null
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+  
+  #Lista dei modelli Autoencoder 
+  autoencoder_models:
+  
+    - name: "Autoencoder"
+      path: "models/Autoencoder.pth"
+      fgsm: false
+      epochs: 200
+      epsilon: 0
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "Autoencoder_0.05"
+      path: "models/Autoencoder_0.05.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.05
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "Autoencoder_0.1"
+      path: "models/Autoencoder_0.1.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: 0.1
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+      
+    - name: "Autoencoder_None"
+      path: "models/Autoencoder_None.pth"
+      fgsm: true
+      epochs: 200
+      epsilon: null
+      optimizer: "Adam"
+      lr: 0.0001
+      scheduler: "CosineAnnealingLR"
+```
+
+### Results of the Training
+
+All models (CNN, CNNplus, and Autoencoder) were evaluated both with and
+without adversarial training. When adversarial training was applied,
+several epsilon values were considered 0.1,0.05,random(0.01–0.15)0.1,
+0.05, random (0.01–0.15)0.1,0.05,random(0.01–0.15). It is worth noting
+that eps = null corresponds to a randomly sampled epsilon in the range
+(0.1–0.15) for each batch.
+
+-   **CNN**
+
+    -   Simpler architecture
+
+    -   Converges in \~200 epochs
+
+    -   Uses Adam optimizer (lr=0.0001) with cosine annealing scheduler
+
+    -   Achieves reasonable accuracy, but lower than CNNplus
+
+        |     |     |
+        |-----|-----|
+        |     |     |
+        |     |     |
+
+-   **CNNplus**
+
+    -   More expressive and stable architecture
+
+    -   Converges faster (\~50 epochs)
+
+    -   Uses Adam optimizer (lr=0.0001) with cosine annealing scheduler
+
+    -   Achieves higher accuracy than CNN
+
+        |     |     |
+        |-----|-----|
+        |     |     |
+        |     |     |
+
+-   **AutoEncoder**
+
+    -   Trained for 200 epochs
+
+    -   Uses Adam optimizer (lr=0.0001) with cosine annealing scheduler
+
+    -   Loss function: Mean Squared Error (MSELoss) on reconstruction
+        output
+
+        |     |     |
+        |-----|-----|
+        |     |     |
+        |     |     |
+
+## Experiment 1e2
+
+### Parameters
+
+To run this experiment use:
+
+```         
+python main.py --experiment 1e2
+```
+
+For these experiment I use this configuration, that can be found in
+`/configs/config_1.yaml`:
+
+```         
+seed: 99
+device: auto
+
+data:
+  batch_size: 256
+  validation_split: 10
+  num_workers: 2
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2023, 0.1994, 0.2010]
+
+#Configurazione per l'esperimento 1 e 2
+models:
+  test_cnn: true
+  test_autoencoder: true
+  
+  #Lista dei modelli CNN da testare
+  cnn_models:
+    - name: "CNN"
+      path: "models/CNN.pth"
+    - name: "CNNplus"
+      path: "models/CNNplus.pth"
+    - name: "CNN_0.05"
+      path: "models/CNN_0.05.pth"
+    - name: "CNNplus_0.05"
+      path: "models/CNNplus_0.05.pth"
+    - name: "CNN_0.1"
+      path: "models/CNN_0.1.pth"
+    - name: "CNNplus_0.1"
+      path: "models/CNNplus_0.1.pth"
+    - name: "CNN_None"
+      path: "models/CNN_None.pth"
+    - name: "CNNplus_None"
+      path: "models/CNNplus_None.pth"
+  
+  #Lista dei modelli Autoencoder da testare
+  autoencoder:
+    - name: "Autoencoder"
+      path: "models/Autoencoder.pth"
+    - name: "Autoencoder_0.05"
+      path: "models/Autoencoder_0.05.pth"
+    - name: "Autoencoder_0.1"
+      path: "models/Autoencoder_0.1.pth"
+    - name: "Autoencoder_None"
+      path: "models/Autoencoder_None.pth"
+
+#Parametri per la valutazione
+evaluation:
+  temperature: 1000
+
+fgsm:
+  epsilons_cnn: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15]
+  epsilons_ae: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15]
+
+logging:
+  project_name: "Lab4-OOD_Detection"
+```
+
+The commented parameters are the ones used for the various runs.
+
+### Results Exercise 1
+
+#### CNN
+
+<details>
+
+<summary><strong>📊 CNN with no FGSM training</strong></summary>
+
+<br>
+
++----------------+----------------+----------------+
+| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
++----------------+----------------+----------------+
+| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
++----------------+----------------+----------------+
+| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 10**\          | 11**\          | 12**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 13**\          | 14**\          | 15**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
++----------------+----------------+----------------+
+
+</details>
+
+<details>
+
+<summary><strong>📊 CNN with eps=0.05 FGSM training</strong></summary>
+
+<br>
+
++----------------+----------------+----------------+
+| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
++----------------+----------------+----------------+
+| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
++----------------+----------------+----------------+
+| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 10**\          | 11**\          | 12**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 13**\          | 14**\          | 15**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
++----------------+----------------+----------------+
+
+</details>
+
+</details>
+
+<details>
+
+<summary><strong>📊 CNN with eps=0.1 FGSM training</strong></summary>
+
+<br>
+
++----------------+----------------+----------------+
+| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
++----------------+----------------+----------------+
+| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
++----------------+----------------+----------------+
+| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 10**\          | 11**\          | 12**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 13**\          | 14**\          | 15**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
++----------------+----------------+----------------+
+
+</details>
+
+</details>
+
+<details>
+
+<summary><strong>📊 CNN with esp=random(0.01-0.15) FGSM
+training</strong></summary>
+
+<br>
+
++----------------+----------------+----------------+
+| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
++----------------+----------------+----------------+
+| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
++----------------+----------------+----------------+
+| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
+| ![](ass%2      | ![](ass%2      | ![](ass%2      |
+| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
+| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
+| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 10**\          | 11**\          | 12**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
++----------------+----------------+----------------+
+| **Grafico      | **Grafico      | **Grafico      |
+| 13**\          | 14**\          | 15**\          |
+| ![] ( a        | ![] ( a        | ![] ( a        |
+| s              | s              | s              |
+| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
+| p l            | p l            | p l            |
+| o              | o              | o              |
+| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
++----------------+----------------+----------------+
+
+</details>
+
+The histograms indicate that the baseline model struggles to clearly
+differentiate between real and fake data. However, its performance
+noticeably improves when FGSM is incorporated as a data augmentation
+technique during training.
+
+Using FGSM in this way improves OOD (Out-of-Distribution) detection. I
+tested the model using small epsilon values, given the nature of
+CIFAR-10.
+
+Despite this improvement, OOD detection remains challenging. The
+histograms reveal that the distributions of real and fake data still
+partially overlap, meaning complete separation has not been achieved.
+
+Comparing scoring functions, there is no clear or consistent advantage
+in using either max_logit or max_softmax (with temperature fixed at
+1000). In certain cases, one metric slightly outperforms the other, and
+vice versa, as illustrated in the plots.
+
+This model also appears less stable than the CNNplus model, both in
+terms of OOD detection and during the training process, as reflected in
+the results. Both models were trained with the Adam optimizer (learning
+rate 0.0001) and a cosine annealing scheduler.
+
+#### CNNplus
+
+In terms of raw test set accuracy, the CNNplus model clearly outperforms
+CNN, as reflected in the confusion matrices. It also demonstrates
+superior performance on ROC and Precision-Recall curves compared to CNN.
+
+The histograms show that the baseline model struggles to differentiate
+between real and fake data. However, its performance improves when FGSM
+is employed as a data augmentation technique during training.
+
+Using FGSM in this way improves OOD (Out-of-Distribution) detection. I
+tested the model using small epsilon values, given the nature of
+CIFAR-10.
+
+Overall, the max_softmax score (with temperature fixed at 1000)
+generally yields better results than using raw logits directly.
+
+There is no consistent advantage between max_logit and max_softmax as
+scoring functions—each can outperform the other in specific cases, as
+shown in the plots.
+
+<details>
+
+<summary><strong>📊 CNNplus with no FGSM training</strong></summary>
+
+<br>
+
++------------------+------------------+------------------+
+| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
++------------------+------------------+------------------+
+| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
++------------------+------------------+------------------+
+| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
++------------------+------------------+------------------+
+| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
++------------------+------------------+------------------+
+| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
++------------------+------------------+------------------+
+
+</details>
+
+<details>
+
+<summary><strong>📊 CNNplus with eps=0.05 FGSM
+training</strong></summary>
+
+<br>
+
++------------------+------------------+------------------+
+| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
++------------------+------------------+------------------+
+| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
++------------------+------------------+------------------+
+| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
++------------------+------------------+------------------+
+| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
++------------------+------------------+------------------+
+| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
++------------------+------------------+------------------+
+
+</details>
+
+</details>
+
+<details>
+
+<summary><strong>📊 CNNplus with eps=0.1 FGSM
+training</strong></summary>
+
+<br>
+
++------------------+------------------+------------------+
+| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
++------------------+------------------+------------------+
+| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
++------------------+------------------+------------------+
+| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
++------------------+------------------+------------------+
+| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
++------------------+------------------+------------------+
+| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
++------------------+------------------+------------------+
+
+</details>
+
+</details>
+
+<details>
+
+<summary><strong>📊 CNNplus with esp=random(0.01-0.15) FGSM
+training</strong></summary>
+
+<br>
+
++------------------+------------------+------------------+
+| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
++------------------+------------------+------------------+
+| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
++------------------+------------------+------------------+
+| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
+| ![] (            | ![] (            | ![] (            |
+| a                | a                | a                |
+| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
+| s                | s                | s                |
+| /                | /                | /                |
+| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
++------------------+------------------+------------------+
+| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
++------------------+------------------+------------------+
+| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
+| !                | !                | !                |
+| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
+| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
+| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
++------------------+------------------+------------------+
+
+</details>
+
+#### Autoencoder
+
+In general, the AutoEncoder model is more robust and better suited for
+anomaly detection, as shown by the plots, especially the scores in the
+histogram, which clearly highlight this.
+
+Training the model with FGSM as a data augmentation technique sometimes
+leads to slightly better performance, but the improvement is marginal in
+the context of this experiment.
+
+In all cases, the network appears to detect the difference between real
+and fake data much more effectively than CNN-based models.
+
+<details>
+
+<summary><strong>📊 Autoencoder with no FGSM training</strong></summary>
+
+<br>
+
++-------------------+-------------------+-------------------+
+| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
++-------------------+-------------------+-------------------+
+
+</details>
+
+<details>
+
+<summary><strong>📊 Autoencoder with eps0.05 FGSM
+training</strong></summary>
+
+<br>
+
++-------------------+-------------------+-------------------+
+| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
++-------------------+-------------------+-------------------+
+
+</details>
+
+</details>
+
+<details>
+
+<summary><strong>📊 Autoencoder with eps=0.1 FGSM
+training</strong></summary>
+
+<br>
+
++-------------------+-------------------+-------------------+
+| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
++-------------------+-------------------+-------------------+
+
+</details>
+
+</details>
+
+<details>
+
+<summary><strong>📊 Autoencoder with esp=random(0.01-0.15) FGSM
+training</strong></summary>
+
+<br>
+
++-------------------+-------------------+-------------------+
+| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
+| ![]               | ![]               | ![]               |
+| (                 | (                 | (                 |
+| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
+| s                 | s                 | s                 |
+| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
++-------------------+-------------------+-------------------+
+| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
+| ![](asse%         | ![](asse%         | ![](asse%         |
+| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
+| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
++-------------------+-------------------+-------------------+
+
+</details>
+
+### Results Exercise 2
+
+These exercises implement the FGSM Attack based on [PyTorch's FGSM
+tutorial](https://docs.pytorch.org/tutorials/beginner/fgsm_tutorial.html).
+
+For exercise 2.2, the implementation follows the training approach
+described in ["Training Augmentation with Adversarial Examples for
+Robust Speech Recognition"](https://arxiv.org/abs/1806.02782), testing
+with these epsilon values: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15].
+
+#### CNN
+
+When trained normally (without adversarial augmentation), the model's
+accuracy drops immediately to 0% under an FGSM attack at any tested
+epsilon value. However, when trained with FGSM as a data augmentation
+technique, the model becomes significantly more robust to such attacks.
+
+The best performance is observed when a random epsilon between 0.01 and
+0.15 is used for FGSM during training.
+
+|     |     |
+|-----|-----|
+|     |     |
+|     |     |
+|     |     |
+|     |     |
+
+#### CNNplus
+
+When trained normally (without adversarial augmentation), the model's
+accuracy drops immediately to 0% under an FGSM attack at any tested
+epsilon value. However, when trained with FGSM as a data augmentation
+technique, the model becomes significantly more robust to such attacks.
+
+The best performance is observed when a random epsilon between 0.01 and
+0.15 is used for FGSM during training. in this case, the slightly lower
+accuracy at small epsilon values may be due to the fact that the epsilon
+value lies near the edge of the uniform distribution `[0.01, 0.15]` used
+during training. As a result, the model may have seen fewer examples
+with that perturbation, reducing its accuracy in that region.
+
+|     |     |
+|-----|-----|
+|     |     |
+|     |     |
+|     |     |
+|     |     |
+
+#### Autoencoder
+
+In terms of reconstruction loss (measured by MSE Loss), the autoencoder
+model performs better when FGSM is used as a data augmentation technique
+during training, with a random epsilon sampled between 0.01 and 0.15.
+
+In general the Autoencoder models seems more robust than the CNN and
+CNNplus model at this type of attack.
+
+|     |     |
+|-----|-----|
+|     |     |
+|     |     |
+|     |     |
+|     |     |
+
+# Experiment 3
+
+### Parameters
+
+To run this experiment use:
+
+```         
+python main.py --experiment 3
+```
+
+For these experiment I use this configuration, that can be found in
+`/configs/config_3.yaml`:
+
+```         
+seed: 99
+device: auto
+
+data:
+  batch_size: 256
+  validation_split: 10
+  num_workers: 2
+  mean: [0.4914, 0.4822, 0.4465]
+  std: [0.2023, 0.1994, 0.2010]
+
+#Configurazione per l'esperimento 3
+models:
+  #Lista dei modelli da testare
+  cnn_models:
+  
+    - name: "CNN"
+      path: "models/CNN.pth"
+      
+    - name: "CNNplus"
+      path: "models/CNNplus.pth"
+      
+    - name: "CNN_0.05"
+      path: "models/CNN_0.05.pth"
+      
+    - name: "CNNplus_0.05"
+      path: "models/CNNplus_0.05.pth"
+      
+    - name: "CNN_0.1"
+      path: "models/CNN_0.1.pth"
+      
+    - name: "CNNplus_0.1"
+      path: "models/CNNplus_0.1.pth"
+      
+    - name: "CNN_None"
+      path: "models/CNN_None.pth"
+      
+    - name: "CNNplus_None"
+      path: "models/CNNplus_None.pth"
+      
+    
+fgsm:
+  epsilons_cnn: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15]
+  epsilons_ae: [0.0, 0.05, 0.075, 0.1, 0.125, 0.15]
+  target_class: 0
+
+logging:
+  project_name: "Lab4-OOD_Detection"
+```
+
+### What and How
+
+In the third exercise, the objective was to implement a targeted FGSM
+attack and analyze the results both quantitatively and qualitatively.
+
+For the implementation, I used the code written for the non-targeted
+FGSM attack and slightly modified it so that, in examples where the
+model did not already predict the target class, it would instead be
+pushed to predict it. The key was to apply two small adjustments: the
+first was to replace the original label with the target class, so that
+the loss computed during the forward pass measures how far the model is
+from predicting the target class; the second was to pass `-epsilon` to
+the FGSM attack method. With these adjustments, the attack no longer
+maximizes the distance from the original prediction but instead
+minimizes the distance to the target.
+
+To quantitatively analyze the performance, I used the following metrics.
+
+```         
+#Metrica che dice: percentuale di successo sui campioni che non erano già target_class (che il modello li classificasse bene o meno)
+            'overall_success_rate': targeted_success / total_samples if total_samples > 0 else 0.0,
+            
+            #Metrica che dice: percentuale di successo sui campioni che non erano già target_class e che il modello classificava correttamente
+            'success_from_correct': targeted_success_from_correct / correctly_classified_original if correctly_classified_original > 0 else 0.0,
+            
+            #Metrica che dice: numero totale di campioni processati (esclusi gli skip)
+            'total_samples': total_samples,
+            
+            #Metrica che dice: quanti esempi erano classificati correttamente tra quelli processati
+            'correctly_classified': correctly_classified_original,
+            
+            #Metrica che dice: quanti attacchi sono riusciti (tra i campioni processati)
+            'targeted_successes': targeted_success
+```
+
+For the qualitative analysis, I plotted figures showing the original
+image, the applied perturbation, and the adversarial image, highlighting
+the cases in which the attack was successful and those in which it was
+not.
+
+#### CNN
+
+#### CNNplus
