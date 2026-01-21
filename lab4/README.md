@@ -173,8 +173,7 @@ pretraining_configs:
 
 All models (CNN, CNNplus, and Autoencoder) were evaluated both with and
 without adversarial training. When adversarial training was applied,
-several epsilon values were considered 0.1,0.05,random(0.01–0.15)0.1,
-0.05, random (0.01–0.15)0.1,0.05,random(0.01–0.15). It is worth noting
+several epsilon values were considered 0.1,0.05,random(0.01–0.15). It is worth noting
 that eps = null corresponds to a randomly sampled epsilon in the range
 (0.1–0.15) for each batch.
 
@@ -188,11 +187,16 @@ that eps = null corresponds to a randomly sampled epsilon in the range
 
     -   Achieves reasonable accuracy, but lower than CNNplus
 
-        |     |     |
-        |-----|-----|
-        |     |     |
-        |     |     |
+| Train Loss Adv                                               | Train Loss Clean                                                 |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- |
+| ![CNN Train Loss Adv](plots/pretrain/cnn_train_loss_adv.png) | ![CNN Train Loss Clean](plots/pretrain/cnn_train_loss_clean.png) |
 
+| Val Loss                                         | Test Accuracy                                              |
+| ------------------------------------------------ | ---------------------------------------------------------- |
+| ![CNN Val Loss](plots/pretrain/cnn_val_loss.png) | ![CNN Test Accuracy](plots/pretrain/cnn_test_accuracy.png) |
+
+
+      
 -   **CNNplus**
 
     -   More expressive and stable architecture
@@ -203,10 +207,14 @@ that eps = null corresponds to a randomly sampled epsilon in the range
 
     -   Achieves higher accuracy than CNN
 
-        |     |     |
-        |-----|-----|
-        |     |     |
-        |     |     |
+| Train Loss Adv                                                         | Train Loss Clean                                                           |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| ![CNN Plus Train Loss Adv](plots/pretrain/cnn_plus_train_loss_adv.png) | ![CNN Plus Train Loss Clean](plots/pretrain/cnn_plus_train_loss_clean.png) |
+
+| Test Accuracy                                                   | Val Loss                                                   |
+| --------------------------------------------------------------- | ---------------------------------------------------------- |
+| ![CNN Plus Test Accuracy](plots/pretrain/cnn_plus_test_acc.png) | ![CNN Plus Val Loss](plots/pretrain/cnn_plus_val_loss.png) |
+
 
 -   **AutoEncoder**
 
@@ -216,11 +224,16 @@ that eps = null corresponds to a randomly sampled epsilon in the range
 
     -   Loss function: Mean Squared Error (MSELoss) on reconstruction
         output
+        
+| Train Loss Adv                                                               | Train Loss Clean                                                                 |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| ![Autoencoder Train Loss Adv](plots/pretrain/autoencoder_train_loss_adv.png) | ![Autoencoder Train Loss Clean](plots/pretrain/autoencoder_train_loss_clean.png) |
 
-        |     |     |
-        |-----|-----|
-        |     |     |
-        |     |     |
+| Val Loss                                                         |   |
+| ---------------------------------------------------------------- | - |
+| ![Autoencoder Val Loss](plots/pretrain/autoencoder_val_loss.png) |   |
+
+
 
 ## Experiment 1e2
 
@@ -305,89 +318,49 @@ The commented parameters are the ones used for the various runs.
 
 <br>
 
-+----------------+----------------+----------------+
-| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
-+----------------+----------------+----------------+
-| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
-+----------------+----------------+----------------+
-| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 10**\          | 11**\          | 12**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 13**\          | 14**\          | 15**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
-+----------------+----------------+----------------+
-
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNN/CNN_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNN/CNN_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNN/CNN_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNN/CNN_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNN/CNN_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNN/CNN_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN/CNN_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN/CNN_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN/CNN_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN/CNN_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN/CNN_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN/CNN_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN/CNN_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN/CNN_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNN/CNN_temp:1000__softmax_Real_data.png) |
 </details>
 
 <details>
 
-<summary><strong>📊 CNN with eps=0.05 FGSM training</strong></summary>
+<summary><strong>📊 CNN with eps=0.05 FGSM
+training</strong></summary>
 
 <br>
 
-+----------------+----------------+----------------+
-| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
-+----------------+----------------+----------------+
-| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
-+----------------+----------------+----------------+
-| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 10**\          | 11**\          | 12**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 13**\          | 14**\          | 15**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
-+----------------+----------------+----------------+
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNN_0.05/CNN_0.05_temp:1000__softmax_Real_data.png) |
 
 </details>
 
@@ -395,47 +368,29 @@ The commented parameters are the ones used for the various runs.
 
 <details>
 
-<summary><strong>📊 CNN with eps=0.1 FGSM training</strong></summary>
+<summary><strong>📊 CNN with eps=0.1 FGSM
+training</strong></summary>
 
 <br>
 
-+----------------+----------------+----------------+
-| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
-+----------------+----------------+----------------+
-| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
-+----------------+----------------+----------------+
-| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 10**\          | 11**\          | 12**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 13**\          | 14**\          | 15**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
-+----------------+----------------+----------------+
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNN_0.1/CNN_0.1_temp:1000__softmax_Real_data.png) |
+
 
 </details>
 
@@ -448,43 +403,23 @@ training</strong></summary>
 
 <br>
 
-+----------------+----------------+----------------+
-| **Grafico 1**\ | **Grafico 2**\ | **Grafico 3**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot1.png) | ots/plot2.png) | ots/plot3.png) |
-+----------------+----------------+----------------+
-| **Grafico 4**\ | **Grafico 5**\ | **Grafico 6**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot4.png) | ots/plot5.png) | ots/plot6.png) |
-+----------------+----------------+----------------+
-| **Grafico 7**\ | **Grafico 8**\ | **Grafico 9**\ |
-| ![](ass%2      | ![](ass%2      | ![](ass%2      |
-| 0%20e%%2020t%2 | 0%20e%%2020t%2 | 0%20e%%2020t%2 |
-| 0s%20/%20p%20l | 0s%20/%20p%20l | 0s%20/%20p%20l |
-| ots/plot7.png) | ots/plot8.png) | ots/plot9.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 10**\          | 11**\          | 12**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot10.png) | ts/plot11.png) | ts/plot12.png) |
-+----------------+----------------+----------------+
-| **Grafico      | **Grafico      | **Grafico      |
-| 13**\          | 14**\          | 15**\          |
-| ![] ( a        | ![] ( a        | ![] ( a        |
-| s              | s              | s              |
-| se%20t%20s%20/ | se%20t%20s%20/ | se%20t%20s%20/ |
-| p l            | p l            | p l            |
-| o              | o              | o              |
-| ts/plot13.png) | ts/plot14.png) | ts/plot15.png) |
-+----------------+----------------+----------------+
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNN_None/CNN_None_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNN_None/CNN_None_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNN_None/CNN_None_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNN_None/CNN_None_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNN_None/CNN_None_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNN_None/CNN_None_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNN_None/CNN_None_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNN_None/CNN_None_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNN_None/CNN_None_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNN_None/CNN_None_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNN_None/CNN_None_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNN_None/CNN_None_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNN_None/CNN_None_temp:1000__softmax_Real_data.png) |
 
 </details>
 
@@ -538,44 +473,23 @@ shown in the plots.
 
 <br>
 
-+------------------+------------------+------------------+
-| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
-+------------------+------------------+------------------+
-| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
-+------------------+------------------+------------------+
-| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
-+------------------+------------------+------------------+
-| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
-+------------------+------------------+------------------+
-| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
-+------------------+------------------+------------------+
-
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNNplus/CNNplus_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNNplus/CNNplus_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNNplus/CNNplus_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNNplus/CNNplus_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNNplus/CNNplus_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNNplus/CNNplus_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus/CNNplus_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus/CNNplus_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus/CNNplus_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus/CNNplus_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus/CNNplus_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus/CNNplus_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNNplus/CNNplus_temp:1000__softmax_Real_data.png) |
 </details>
 
 <details>
@@ -585,43 +499,23 @@ training</strong></summary>
 
 <br>
 
-+------------------+------------------+------------------+
-| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
-+------------------+------------------+------------------+
-| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
-+------------------+------------------+------------------+
-| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
-+------------------+------------------+------------------+
-| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
-+------------------+------------------+------------------+
-| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
-+------------------+------------------+------------------+
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNNplus_0.05/CNNplus_0.05_temp:1000__softmax_Real_data.png) |
 
 </details>
 
@@ -634,43 +528,24 @@ training</strong></summary>
 
 <br>
 
-+------------------+------------------+------------------+
-| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
-+------------------+------------------+------------------+
-| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
-+------------------+------------------+------------------+
-| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
-+------------------+------------------+------------------+
-| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
-+------------------+------------------+------------------+
-| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
-+------------------+------------------+------------------+
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNNplus_0.1/CNNplus_0.1_temp:1000__softmax_Real_data.png) |
+
 
 </details>
 
@@ -683,43 +558,23 @@ training</strong></summary>
 
 <br>
 
-+------------------+------------------+------------------+
-| **Grafico 1**\   | **Grafico 2**\   | **Grafico 3**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot1.png) | plots/plot2.png) | plots/plot3.png) |
-+------------------+------------------+------------------+
-| **Grafico 4**\   | **Grafico 5**\   | **Grafico 6**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot4.png) | plots/plot5.png) | plots/plot6.png) |
-+------------------+------------------+------------------+
-| **Grafico 7**\   | **Grafico 8**\   | **Grafico 9**\   |
-| ![] (            | ![] (            | ![] (            |
-| a                | a                | a                |
-| ss%2%200%20e%20t | ss%2%200%20e%20t | ss%2%200%20e%20t |
-| s                | s                | s                |
-| /                | /                | /                |
-| plots/plot7.png) | plots/plot8.png) | plots/plot9.png) |
-+------------------+------------------+------------------+
-| **Grafico 10**\  | **Grafico 11**\  | **Grafico 12**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot10.png) | lots/plot11.png) | lots/plot12.png) |
-+------------------+------------------+------------------+
-| **Grafico 13**\  | **Grafico 14**\  | **Grafico 15**\  |
-| !                | !                | !                |
-| [](asse%%202%200 | [](asse%%202%200 | [](asse%%202%200 |
-| %20t%20s%20/%20p | %20t%20s%20/%20p | %20t%20s%20/%20p |
-| lots/plot13.png) | lots/plot14.png) | lots/plot15.png) |
-+------------------+------------------+------------------+
+|  |  |
+|---------|----------|
+| Confusion Matrix | ![Confusion Matrix](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000_confusion_matrix.png) |
+| Input Fake Data | ![Input Fake](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__input_Fake_data.png) |
+| Input Real Data | ![Input Real](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__input_Real_data.png) |
+| Logit Fake Data | ![Logit Fake](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__logit_Fake_data.png) |
+| Logit Real Data | ![Logit Real](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__logit_Real_data.png) |
+| Precision-Recall (Max Logit) | ![PR Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__precision_recall_curve_max_logit.png) |
+| Precision-Recall (Max Softmax) | ![PR Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__precision_recall_curve_max_softmax.png) |
+| ROC Curve (Max Logit) | ![ROC Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__roc_curve_max_logit.png) |
+| ROC Curve (Max Softmax) | ![ROC Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__roc_curve_max_softmax.png) |
+| Score Histogram (Max Logit) | ![Score Hist Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp_1000_score_hist_max_logit.png) |
+| Score Histogram (Max Softmax) | ![Score Hist Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp_1000_score_hist_max_softmax.png) |
+| Score (Max Logit) | ![Score Max Logit](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__score_max_logit.png) |
+| Score (Max Softmax) | ![Score Max Softmax](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__score_max_softmax.png) |
+| Softmax Fake Data | ![Softmax Fake](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__softmax_Fake_data.png) |
+| Softmax Real Data | ![Softmax Real](plots/es1e2/CNNplus_None/CNNplus_None_temp:1000__softmax_Real_data.png) |
 
 </details>
 
@@ -742,80 +597,29 @@ and fake data much more effectively than CNN-based models.
 
 <br>
 
-+-------------------+-------------------+-------------------+
-| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
-+-------------------+-------------------+-------------------+
+|  |  |
+|---------|----------|
+| Precision-Recall Curve | ![Precision-Recall](plots/es1e2/Autoencoder/Autoencoder_temp:1000__precision_recall_curve_reconstruction_error.png) |
+| ROC Curve | ![ROC](plots/es1e2/Autoencoder/Autoencoder_temp:1000__roc_curve_reconstruction_error.png) |
+| Score Histogram | ![Score Hist](plots/es1e2/Autoencoder/Autoencoder_temp:1000_score_hist_reconstruction_error.png) |
+| Score Reconstruction Error | ![Score RE](plots/es1e2/Autoencoder/Autoencoder_temp:1000__score_reconstruction_error.png) |
 
 </details>
 
 <details>
 
-<summary><strong>📊 Autoencoder with eps0.05 FGSM
+<summary><strong>📊 Autoencoder with eps=0.05 FGSM
 training</strong></summary>
 
 <br>
 
-+-------------------+-------------------+-------------------+
-| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
-+-------------------+-------------------+-------------------+
+|  |  |
+|---------|----------|
+| Precision-Recall Curve | ![Precision-Recall](plots/es1e2/Autoencoder_0.05/Autoencoder_0.05_temp:1000__precision_recall_curve_reconstruction_error.png) |
+| ROC Curve | ![ROC](plots/es1e2/Autoencoder_0.05/Autoencoder_0.05_temp:1000__roc_curve_reconstruction_error.png) |
+| Score Histogram | ![Score Hist](plots/es1e2/Autoencoder_0.05/Autoencoder_0.05_temp:1000_score_hist_reconstruction_error.png) |
+| Score Reconstruction Error | ![Score RE](plots/es1e2/Autoencoder_0.05/Autoencoder_0.05_temp:1000__score_reconstruction_error.png) |
+
 
 </details>
 
@@ -828,38 +632,13 @@ training</strong></summary>
 
 <br>
 
-+-------------------+-------------------+-------------------+
-| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
-+-------------------+-------------------+-------------------+
+|  |  |
+|---------|----------|
+| Precision-Recall Curve | ![Precision-Recall](plots/es1e2/Autoencoder_0.1/Autoencoder_0.1_temp:1000__precision_recall_curve_reconstruction_error.png) |
+| ROC Curve | ![ROC](plots/es1e2/Autoencoder_0.1/Autoencoder_0.1_temp:1000__roc_curve_reconstruction_error.png) |
+| Score Histogram | ![Score Hist](plots/es1e2/Autoencoder_0.1/Autoencoder_0.1_temp:1000_score_hist_reconstruction_error.png) |
+| Score Reconstruction Error | ![Score RE](plots/es1e2/Autoencoder_0.1/Autoencoder_0.1_temp:1000__score_reconstruction_error.png) |
+
 
 </details>
 
@@ -872,38 +651,12 @@ training</strong></summary>
 
 <br>
 
-+-------------------+-------------------+-------------------+
-| **Grafico 1**\    | **Grafico 2**\    | **Grafico 3**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot1.png) | /plots/plot2.png) | /plots/plot3.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 4**\    | **Grafico 5**\    | **Grafico 6**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot4.png) | /plots/plot5.png) | /plots/plot6.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 7**\    | **Grafico 8**\    | **Grafico 9**\    |
-| ![]               | ![]               | ![]               |
-| (                 | (                 | (                 |
-| ass%2%200%20e%20t | ass%2%200%20e%20t | ass%2%200%20e%20t |
-| s                 | s                 | s                 |
-| /plots/plot7.png) | /plots/plot8.png) | /plots/plot9.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 10**\   | **Grafico 11**\   | **Grafico 12**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot10.png) | plots/plot11.png) | plots/plot12.png) |
-+-------------------+-------------------+-------------------+
-| **Grafico 13**\   | **Grafico 14**\   | **Grafico 15**\   |
-| ![](asse%         | ![](asse%         | ![](asse%         |
-| 2%200%20t%20s%20/ | 2%200%20t%20s%20/ | 2%200%20t%20s%20/ |
-| plots/plot13.png) | plots/plot14.png) | plots/plot15.png) |
-+-------------------+-------------------+-------------------+
+|  |  |
+|---------|----------|
+| Precision-Recall Curve | ![Precision-Recall](plots/es1e2/Autoencoder_None/Autoencoder_None_temp:1000__precision_recall_curve_reconstruction_error.png) |
+| ROC Curve | ![ROC](plots/es1e2/Autoencoder_None/Autoencoder_None_temp:1000__roc_curve_reconstruction_error.png) |
+| Score Histogram | ![Score Hist](plots/es1e2/Autoencoder_None/Autoencoder_None_temp:1000_score_hist_reconstruction_error.png) |
+| Score Reconstruction Error | ![Score RE](plots/es1e2/Autoencoder_None/Autoencoder_None_temp:1000__score_reconstruction_error.png) |
 
 </details>
 
@@ -927,12 +680,12 @@ technique, the model becomes significantly more robust to such attacks.
 The best performance is observed when a random epsilon between 0.01 and
 0.15 is used for FGSM during training.
 
-|     |     |
-|-----|-----|
-|     |     |
-|     |     |
-|     |     |
-|     |     |
+|Epsilon     |Loss     |Examples    |
+|-----|-----|-----|
+| No FGSM   | ![FGSM eps](plots/es1e2/CNN/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.05| ![FGSM eps](plots/es1e2/CNN_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.1| ![FGSM eps](plots/es1e2/CNN_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=random| ![FGSM eps](plots/es1e2/CNN_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_None/FGSM_EXAMPLE_IMG_CNN.png) |
 
 #### CNNplus
 
@@ -948,12 +701,12 @@ value lies near the edge of the uniform distribution `[0.01, 0.15]` used
 during training. As a result, the model may have seen fewer examples
 with that perturbation, reducing its accuracy in that region.
 
-|     |     |
-|-----|-----|
-|     |     |
-|     |     |
-|     |     |
-|     |     |
+|Epsilon     |Loss     |Examples    |
+|-----|-----|-----|
+| No FGSM   | ![FGSM eps](plots/es1e2/CNNplus/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.05| ![FGSM eps](plots/es1e2/CNNplus_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.1| ![FGSM eps](plots/es1e2/CNNplus_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=random| ![FGSM eps](plots/es1e2/CNNplus_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_None/FGSM_EXAMPLE_IMG_CNN.png) |
 
 #### Autoencoder
 
@@ -964,12 +717,12 @@ during training, with a random epsilon sampled between 0.01 and 0.15.
 In general the Autoencoder models seems more robust than the CNN and
 CNNplus model at this type of attack.
 
-|     |     |
-|-----|-----|
-|     |     |
-|     |     |
-|     |     |
-|     |     |
+|Epsilon     |Loss     |Examples    |
+|-----|-----|-----|
+| No FGSM   | ![FGSM eps](plots/es1e2/Autoencoder/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder/FGSM_EXAMPLE_IMG_Autoencoder.png) |
+| FGSM eps=0.05| ![FGSM eps](plots/es1e2/Autoencoder_0.05/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder_0.05/FGSM_EXAMPLE_IMG_Autoencoder.png) |
+| FGSM eps=0.1| ![FGSM eps](plots/es1e2/Autoencoder_0.1/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder_0.1/FGSM_EXAMPLE_IMG_Autoencoder.png) |
+| FGSM eps=random| ![FGSM eps](plots/es1e2/Autoencoder_None/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder_None/FGSM_EXAMPLE_IMG_Autoencoder.png) |
 
 # Experiment 3
 
