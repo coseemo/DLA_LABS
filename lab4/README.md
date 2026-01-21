@@ -1,5 +1,9 @@
 # Laboratory 4: OOD, FGSM, Targeted FGSM
 
+## Organization
+
+The core implementation is primarily contained in fgsm.py. Experimental configuration and execution are managed in main.py, and all metrics are implemented in metrics.py.
+
 ## Plots
 
 All the plots can be found here: - `plots`: [] - **lab4:**
@@ -821,6 +825,7 @@ To quantitatively analyze the performance, I used the following metrics.
             #Metrica che dice: quanti attacchi sono riusciti (tra i campioni processati)
             'targeted_successes': targeted_success
 ```
+A summary of the performance can be seen in here ![output.txt](https://github.com/coseemo/DLA_LABS/blob/main/lab4/output.txt)
 
 For the qualitative analysis, I plotted figures showing the original
 image, the applied perturbation, and the adversarial image, highlighting
