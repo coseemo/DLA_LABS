@@ -827,6 +827,12 @@ image, the applied perturbation, and the adversarial image, highlighting
 the cases in which the attack was successful and those in which it was
 not.
 
+### Results
+
+In general, we observe that attacks become more effective as epsilon increases for models that are not trained with adversarial training. Conversely, for models trained with adversarial training, the attacks tend to be more effective at lower epsilon values, a behavior that is consistent across both the CNN and the CNNplus models.
+It is also interesting to note how the nature of the perturbations changes depending on both the epsilon used during adversarial training and the epsilon used during testing. In particular, when a higher epsilon is employed during adversarial training, the resulting perturbations appear to lose their structured form, whereas lower training epsilon values lead to perturbations that more closely resemble the shape of an image belonging to the target class. On the other hand, the epsilon used during testing seems to push the perturbation toward regions of the image characterized by high contrast (such as edges?).
+Furthermore, when high epsilon values are used both during training and testing, the attack consistently fails: in these cases, the perturbed image appears visually very similar to the original one, differing only in some color variations. In contrast, successful attacks tend to occur when the perturbation is not “constrained” by the model to lose the original target-class structure, to the extent that the adversarial image appears as a superposition of the original image and an image belonging to the target class.
+
 #### CNN
 
 |     |     |
@@ -834,9 +840,156 @@ not.
 | ![FGSM eps](plots/es3/CNN/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNN_0.05/FGSM_SUCCESS_RATE_TARGET_0_.png)|
 |  ![FGSM eps](plots/es3/CNN_0.1/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNN_None/FGSM_SUCCESS_RATE_TARGET_0_.png) |
 
+<details>
+
+<summary><strong>📊 Example for CNN with no FGSM training</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNN/targeted_examples_class0_CNN_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.05](plots/es3/CNN/targeted_examples_class0_CNN_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNN/targeted_examples_class0_CNN_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNN/targeted_examples_class0_CNN_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNN/targeted_examples_class0_CNN_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNN/targeted_examples_class0_CNN_eps0.15.png) |
+
+</details>
+
+<details>
+
+<summary><strong>📊 Example for CNN with FGSM training eps=0.05</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNN_0.05/targeted_examples_class0_CNN_0.05_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.05](plots/es3/CNN_0.05/targeted_examples_class0_CNN_0.05_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNN_0.05/targeted_examples_class0_CNN_0.05_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNN_0.05/targeted_examples_class0_CNN_0.05_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNN_0.05/targeted_examples_class0_CNN_0.05_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNN_0.05/targeted_examples_class0_CNN_0.05_eps0.15.png) |
+
+
+</details>
+
+<details>
+
+<summary><strong>📊 Example for CNN with FGSM training eps=0.1</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNN_0.1/targeted_examples_class0_CNN_0.1_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.1](plots/es3/CNN_0.1/targeted_examples_class0_CNN_0.1_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNN_0.1/targeted_examples_class0_CNN_0.1_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNN_0.1/targeted_examples_class0_CNN_0.1_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNN_0.1/targeted_examples_class0_CNN_0.1_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNN_0.1/targeted_examples_class0_CNN_0.1_eps0.15.png) |
+
+</details>
+
+<details>
+
+<summary><strong>📊 Example for CNN with FGSM training eps=Random</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNN_None/targeted_examples_class0_CNN_None_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.1](plots/es3/CNN_None/targeted_examples_class0_CNN_None_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNN_None/targeted_examples_class0_CNN_None_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNN_None/targeted_examples_class0_CNN_None_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNN_None/targeted_examples_class0_CNN_None_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNN_None/targeted_examples_class0_CNN_None_eps0.15.png) |
+
+
+</details>
+
+
+
 #### CNNplus
 
 |     |     |
 |-----|-----|
 | ![FGSM eps](plots/es3/CNNplus/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNNplus_0.05/FGSM_SUCCESS_RATE_TARGET_0_.png)|
 |  ![FGSM eps](plots/es3/CNNplus_0.1/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNNplus_None/FGSM_SUCCESS_RATE_TARGET_0_.png) |
+
+|     |     |
+|-----|-----|
+| ![FGSM eps](plots/es3/CNN/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNN_0.05/FGSM_SUCCESS_RATE_TARGET_0_.png)|
+|  ![FGSM eps](plots/es3/CNN_0.1/FGSM_SUCCESS_RATE_TARGET_0_.png) |  ![FGSM eps](plots/es3/CNN_None/FGSM_SUCCESS_RATE_TARGET_0_.png) |
+
+<details>
+
+<summary><strong>📊 Example for CNNplus with no FGSM training</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNNplus/targeted_examples_class0_CNNplus_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.05](plots/es3/CNNplus/targeted_examples_class0_CNNplus_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNNplus/targeted_examples_class0_CNNplus_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNNplus/targeted_examples_class0_CNNplus_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNNplus/targeted_examples_class0_CNNplus_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNNplus/targeted_examples_class0_CNNplus_eps0.15.png) |
+
+</details>
+
+<details>
+
+<summary><strong>📊 Example for CNNplus with FGSM training eps=0.05</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNNplus_0.05/targeted_examples_class0_CNNplus_0.05_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.05](plots/es3/CNNplus_0.05/targeted_examples_class0_CNNplus_0.05_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNNplus_0.05/targeted_examples_class0_CNNplus_0.05_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNNplus_0.05/targeted_examples_class0_CNNplus_0.05_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNNplus_0.05/targeted_examples_class0_CNNplus_0.05_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNNplus_0.05/targeted_examples_class0_CNNplus_0.05_eps0.15.png) |
+
+
+</details>
+
+<details>
+
+<summary><strong>📊 Example for CNNplus with FGSM training eps=0.1</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNNplus_0.1/targeted_examples_class0_CNNplus_0.1_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.1](plots/es3/CNNplus_0.1/targeted_examples_class0_CNNplus_0.1_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNNplus_0.1/targeted_examples_class0_CNNplus_0.1_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNNplus_0.1/targeted_examples_class0_CNNplus_0.1_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNNplus_0.1/targeted_examples_class0_CNNplus_0.1_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNNplus_0.1/targeted_examples_class0_CNNplus_0.1_eps0.15.png) |
+
+</details>
+
+<details>
+
+<summary><strong>📊 Example for CNNplus with FGSM training eps=Random</strong></summary>
+
+<br>
+
+| Epsilon | Examples |
+|--------|----------|
+| FGSM eps = 0.0 | ![eps 0.0](plots/es3/CNNplus_None/targeted_examples_class0_CNNplus_None_eps0.0.png) |
+| FGSM eps = 0.05 | ![eps 0.1](plots/es3/CNNplus_None/targeted_examples_class0_CNNplus_None_eps0.05.png) |
+| FGSM eps = 0.075 | ![eps 0.075](plots/es3/CNNplus_None/targeted_examples_class0_CNNplus_None_eps0.075.png) |
+| FGSM eps = 0.1 | ![eps 0.1](plots/es3/CNNplus_None/targeted_examples_class0_CNNplus_None_eps0.1.png) |
+| FGSM eps = 0.125 | ![eps 0.125](plots/es3/CNNplus_None/targeted_examples_class0_CNNplus_None_eps0.125.png) |
+| FGSM eps = 0.15 | ![eps 0.15](plots/es3/CNNplus_None/targeted_examples_class0_CNNplus_None_eps0.15.png) |
+
+
+</details>
