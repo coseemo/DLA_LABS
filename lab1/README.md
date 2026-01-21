@@ -92,7 +92,7 @@ For these experiment i use this configuration, that can be found in `/configs/co
         batch_norm: false
     
     training:
-      epochs: 100
+      epochs: 30
       criterion: "CrossEntropyLoss"
       optimizer: "Adam"
       lr: 0.001
