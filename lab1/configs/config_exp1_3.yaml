@@ -16,7 +16,7 @@ model:
     zero_init_residual: true #false: blocco residuale parte inizializzato con valori casuali, true: y simile a x
 
 training:
-  epochs: 50
+  epochs: 100
   criterion: "CrossEntropyLoss"
   optimizer: "Adam"
   lr: 0.001
