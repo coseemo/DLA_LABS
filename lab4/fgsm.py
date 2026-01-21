@@ -382,7 +382,7 @@ class FGSM_trainer:
     
             #Forward pass su dati perturbati
             z_adv, x_rec_adv = self.model(perturbed_data_normalized)
-            adv_loss = self.criterion(x_rec_adv, data)
+            adv_loss = self.criterion(x_rec_adv, perturbed_data_normalized)
             total_loss += adv_loss.item()
     
             #Salva qualche esempio per il plot
