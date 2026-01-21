@@ -92,7 +92,7 @@ For these experiment i use this configuration, that can be found in `/configs/co
         batch_norm: false
     
     training:
-      epochs: 1
+      epochs: 100
       criterion: "CrossEntropyLoss"
       optimizer: "Adam"
       lr: 0.001
@@ -148,7 +148,7 @@ For these experiment i use this configuration, that can be found in `/configs/co
         zero_init_residual: true #false: blocco residuale parte inizializzato con valori casuali, true: y simile a x
     
     training:
-      epochs: 1
+      epochs: 100
       criterion: "CrossEntropyLoss"
       optimizer: "Adam"
       lr: 0.001
