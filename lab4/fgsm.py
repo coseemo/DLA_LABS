@@ -312,7 +312,6 @@ class FGSM_trainer:
         tqdm_bar = tqdm(test_loader, total=len(test_loader), desc=f"[FGSM attack epsilon: {self.epsilon}]", leave=False)
         for data, target in tqdm_bar:
             data, target = data.to(self.device), target.to(self.device)
-            total += 1
     
             data.requires_grad = True
     
@@ -320,6 +319,10 @@ class FGSM_trainer:
             output = self.model(data)
             #Indice della max log-probability
             init_pred = output.max(1, keepdim=True)[1]
+            
+            if init_pred.item() != target.item():
+                continue
+                
             #Calcolo la loss
             loss = self.criterion(output, target)
             #Setto a zero i gradienti del modello
@@ -350,7 +353,7 @@ class FGSM_trainer:
                 adv = perturbed_data.squeeze().detach().cpu().numpy()
                 adv_examples.append((init_pred.item(), final_pred.item(), adv, orig))
         
-        final_acc = correct / float(total) if total > 0 else 0.0
+        final_acc = correct/float(len(test_loader))
         return final_acc, adv_examples
 
 
