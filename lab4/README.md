@@ -6,11 +6,7 @@ The core implementation is primarily contained in fgsm.py. Experimental configur
 
 ## Plots
 
-All the plots can be found here: - `plots`: [] - **lab4:**
-[<https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB4-OOD_Detection?nw=nwusercosimoborghini1>]
-
-[If you expand the runs, you can see which parameters i used for each
-run]
+All the plots can be found here: [<https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB4-OOD_Detection?nw=nwusercosimoborghini1>]
 
 ## Pretraining
 
@@ -688,7 +684,7 @@ The best performance is observed when a random epsilon between 0.01 and
 |-----|-----|-----|
 | No FGSM   | ![FGSM](plots/es1e2/CNN/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN/FGSM_EXAMPLE_IMG_CNN.png) |
 | FGSM eps=0.05| ![FGSM](plots/es1e2/CNN_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=0.1| ![FGSM](plots/es1e2/CNN_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.1| ![FGSM](plots/es1e2/CNN_0.1/FGSM_eps_CNN.png?v2) | ![FGSM Example](plots/es1e2/CNN_0.1/FGSM_EXAMPLE_IMG_CNN.png?v2) |
 | FGSM eps=random| ![FGSM](plots/es1e2/CNN_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_None/FGSM_EXAMPLE_IMG_CNN.png) |
 
 #### CNNplus
