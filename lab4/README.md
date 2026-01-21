@@ -686,10 +686,10 @@ The best performance is observed when a random epsilon between 0.01 and
 
 |Epsilon     |Loss     |Examples    |
 |-----|-----|-----|
-| No FGSM   | ![FGSM eps](plots/es1e2/CNN/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=0.05| ![FGSM eps](plots/es1e2/CNN_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=0.1| ![FGSM eps](plots/es1e2/CNN_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=random| ![FGSM eps](plots/es1e2/CNN_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_None/FGSM_EXAMPLE_IMG_CNN.png) |
+| No FGSM   | ![FGSM](plots/es1e2/CNN/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.05| ![FGSM](plots/es1e2/CNN_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.1| ![FGSM](plots/es1e2/CNN_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=random| ![FGSM](plots/es1e2/CNN_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNN_None/FGSM_EXAMPLE_IMG_CNN.png) |
 
 #### CNNplus
 
@@ -707,10 +707,10 @@ with that perturbation, reducing its accuracy in that region.
 
 |Epsilon     |Loss     |Examples    |
 |-----|-----|-----|
-| No FGSM   | ![FGSM eps](plots/es1e2/CNNplus/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=0.05| ![FGSM eps](plots/es1e2/CNNplus_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=0.1| ![FGSM eps](plots/es1e2/CNNplus_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
-| FGSM eps=random| ![FGSM eps](plots/es1e2/CNNplus_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_None/FGSM_EXAMPLE_IMG_CNN.png) |
+| No FGSM   | ![FGSM](plots/es1e2/CNNplus/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.05| ![FGSM](plots/es1e2/CNNplus_0.05/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_0.05/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=0.1| ![FGSM](plots/es1e2/CNNplus_0.1/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_0.1/FGSM_EXAMPLE_IMG_CNN.png) |
+| FGSM eps=random| ![FGSM](plots/es1e2/CNNplus_None/FGSM_eps_CNN.png) | ![FGSM Example](plots/es1e2/CNNplus_None/FGSM_EXAMPLE_IMG_CNN.png) |
 
 #### Autoencoder
 
