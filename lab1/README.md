@@ -180,9 +180,9 @@ The commented parameters are the ones used for the various runs.
 In the third exercise, we were asked to replicate the experiments performed on the MLP, but this time on a CNN using CIFAR10. To do this, I used the implementation of PyTorch’s BasicBlock and ResNet as suggested by the exercise instructions, making it slightly lighter and enabling the choice of whether to use skip connections or not. Analyzing the plots, we can see that at low depths, not only do residual connections not improve performance, but they can even worsen it. The same behavior occurs when the CNN has a very high depth. However, when the CNN has a depth greater than 8 and less than 32, noticeable improvements can be observed.
 |  | loss | accuracy| 
 |--|--|--|
-| training |![train_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tloss(1).png)   | ![train_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/acc.png)
-| validation |![val_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/vallos.png)   | ![val_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tracc.png)
-| test | ![test_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tloss.png) | ![test_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/tacc.png)
+| training |![train_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/3.png)   | ![train_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/4.png)
+| validation |![val_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/5.png)   | ![val_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/6.png)
+| test | ![test_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/1.png) | ![test_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/3/2.png)
 
 
 ## Experiment 2.2
@@ -249,7 +249,7 @@ The commented parameters are the ones used for the various runs.
 
 ### Results
 
-For the last exercise, I chose to implement the distillation technique following the guidelines provided in the reference paper [Knowledge Distillation](https://arxiv.org/abs/1503.02531). The steps are:
+For the last exercise, I choose to implement the distillation technique following the guidelines provided in the reference paper [Knowledge Distillation](https://arxiv.org/abs/1503.02531). The steps are:
 
 -   Teacher Training: train the teacher on CIFAR10 and log its performance.
     
@@ -267,7 +267,7 @@ For the last exercise, I chose to implement the distillation technique following
         
 -   Evaluation: Test the distilled student, compare accuracy with teacher and baseline student, and check parameter reduction.
 
-Then I tried to run more experiments by modifying alpha, which is the weight of the losses: as the paper states, increasing alpha leads to better performance.
+Then I tried to run more experiments by modifying alpha, which is the weight of the losses: alpha=0.8 leads to better performance.
 
 ![test_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/4/loss.png) 
 ![test_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/4/acc.png) 
