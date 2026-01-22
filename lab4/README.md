@@ -721,8 +721,8 @@ CNNplus model at this type of attack.
 |-----|-----|-----|
 | No FGSM   | ![FGSM eps](plots/es1e2/Autoencoder/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder/FGSM_EXAMPLE_IMG_Autoencoder.png) |
 | FGSM eps=0.05| ![FGSM eps](plots/es1e2/Autoencoder_0.05/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder_0.05/FGSM_EXAMPLE_IMG_Autoencoder.png) |
-| FGSM eps=0.1| ![FGSM eps](plots/es1e2/Autoencoder_0.1/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder_0.1/FGSM_EXAMPLE_IMG_Autoencoder.png) |
-| FGSM eps=random| ![FGSM eps](plots/es1e2/Autoencoder_None/FGSM_eps_Autoencoder.png) | ![FGSM Example](plots/es1e2/Autoencoder_None/FGSM_EXAMPLE_IMG_Autoencoder.png) |
+| FGSM eps=0.1| ![FGSM eps](plots/es1e2/Autoencoder_0.1/FGSM_eps_Autoencoder.png?v2) | ![FGSM Example](plots/es1e2/Autoencoder_0.1/FGSM_EXAMPLE_IMG_Autoencoder.png) |
+| FGSM eps=random| ![FGSM eps](plots/es1e2/Autoencoder_None/FGSM_eps_Autoencoder.png?v2) | ![FGSM Example](plots/es1e2/Autoencoder_None/FGSM_EXAMPLE_IMG_Autoencoder.png) |
 
 # Experiment 3
 
