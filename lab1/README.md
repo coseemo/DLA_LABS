@@ -121,9 +121,6 @@ In the second exercise, we were asked to update our MLP baseline to add the poss
 |  | loss | accuracy| 
 |--|--|--|
 | test |![train_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/tl.png)   | ![train_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/ta.png)
-| validation |![val_loss](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/vl.png)   | ![val_acc](https://github.com/coseemo/DLA_LABS/blob/main/lab1/plots1/2/va.png)
-
-This can also be explained by analyzing the gradient plot: it is indeed evident that, without residual connections, the model suffers from the vanishing gradient phenomenon.
 
 |  | nores | res| 
 |--|--|--|
