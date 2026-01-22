@@ -232,7 +232,7 @@ For these experiment i use this configuration, that can be found in `/configs/co
       epochs: 50
       criterion: "CrossEntropyLoss"
       optimizer: "Adam"
-      lr: 0.03
+      lr: 0.001
       scheduler: "CosineAnnealingLR"
     
     distillation:
