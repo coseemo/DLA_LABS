@@ -24,16 +24,19 @@ For these experiment I use this configuration, that can be found in `/configs/co
     
     data:
       batch_size: 128
-      validation_split: 20  #Percentuale che definisce la grandezza del validation set
+      #Percentuale che definisce la grandezza del validation set
+      validation_split: 20  
       num_workers: 4
     
     model:
       type: "MLP"
       params:
         input_size: 784 #28*28 per MNIST
-        layers_dim: 128  #32 #64 #128
+        #come dimensione dei layer ho fatto prove su [32, 64, 128]
+        layers_dim: 128 
         class_num: 10
-        hidden_layers_num: 40 #10 #20 #40
+        #come numero di hidden layers ho fatto prove su [10, 20, 40]
+        hidden_layers_num: 40 
         residual: false
         activation: "ReLU"
         dropout: 0.0
@@ -74,7 +77,9 @@ For these experiment i use this configuration, that can be found in `/configs/co
     
     data:
       batch_size: 128
-      validation_split: 20  #Percentuale che definisce la grandezza del validation set
+
+      #Percentuale che definisce la grandezza del validation set
+      validation_split: 20  
       num_workers: 4
     
     model:
@@ -83,8 +88,12 @@ For these experiment i use this configuration, that can be found in `/configs/co
         input_size: 784  #28*28 for MNIST
         layers_dim: 128
         class_num: 10
-        hidden_layers_num: 2  #Parametro che verrà sovrascritto in esecuzione (prove su profofndità)
-        residual: false  #Parametro che verrà sovrascritto in esecuzione (prove su connessioni residuali)
+
+        #Parametro che verrà sovrascritto in esecuzione (prove su profofndità)
+        hidden_layers_num: 2
+
+        #Parametro che verrà sovrascritto in esecuzione (prove su connessioni residuali)
+        residual: false 
         activation: "ReLU"
         dropout: 0.0
         batch_norm: false
@@ -97,7 +106,8 @@ For these experiment i use this configuration, that can be found in `/configs/co
       scheduler: "CosineAnnealingLR"
     
     experiment:
-      depths: [5, 10, 20, 40]  #Varie profondità di test
+      #Varie profondità di test
+      depths: [5, 10, 20, 40]  
       analyze_gradients: true
     
     logging:
@@ -140,10 +150,17 @@ For these experiment i use this configuration, that can be found in `/configs/co
       type: "CNN"
       params:
         block_type: "basic"
-        layers: [1, 1, 1, 1]  #Parametro che verrà sovrascritto in esecuzione (prove su profofndità)
+        
+        #Parametro che verrà sovrascritto in esecuzione (prove su profofndità)
+        layers: [1, 1, 1, 1] 
+        
         num_classes: 10
-        residual: false  #Parametro che verrà sovrascritto in esecuzione (prove su connessioni residuali)
-        zero_init_residual: true #false: blocco residuale parte inizializzato con valori casuali, true: y simile a x
+        
+        #Parametro che verrà sovrascritto in esecuzione (prove su connessioni residuali)
+        residual: false
+        
+        #false: blocco residuale parte inizializzato con valori casuali, true: y simile a x
+        zero_init_residual: true 
     
     training:
       epochs: 100
@@ -153,7 +170,8 @@ For these experiment i use this configuration, that can be found in `/configs/co
       scheduler: "CosineAnnealingLR"
     
     experiment:
-      depths: [[1, 1, 1, 1], [2, 2, 2, 2], [3, 4, 6, 3], [5, 6, 8, 5]]   #Varie profondità di test 
+    #Varie profondità di test 
+      depths: [[1, 1, 1, 1], [2, 2, 2, 2], [3, 4, 6, 3], [5, 6, 8, 5]]   
     
     logging:
       project_name: "LAB1-CNN"
@@ -183,9 +201,10 @@ For these experiment i use this configuration, that can be found in `/configs/co
     
     data:
       batch_size: 128
-      validation_split: 20  # percentage
+      validation_split: 20  
       num_workers: 4
-      #Modello teacher (più grande)
+      
+    #Modello teacher (più grande)
     teacher_model:
       type: "CNN"
       params:
@@ -221,7 +240,9 @@ For these experiment i use this configuration, that can be found in `/configs/co
     
     distillation:
       temperature: 3.0
-      alpha: 0.7 #0.8 #0.9
+      
+      #Ho fatto prove con [0.7, 0.8, 0.9]
+      alpha: 0.7 
     
     logging:
       project_name: "LAB1-CNN"
@@ -231,7 +252,7 @@ The commented parameters are the ones used for the various runs.
 
 ### Results
 
-For the last exercise, I chose to implement the distillation technique following the guidelines provided in the reference paper [Knowledge Distillation](https://arxiv.org/abs/1503.02531?utm_source=chatgpt.com). The steps are:
+For the last exercise, I chose to implement the distillation technique following the guidelines provided in the reference paper [Knowledge Distillation](https://arxiv.org/abs/1503.02531). The steps are:
 
 -   Teacher Training: train the teacher on CIFAR10 and log its performance.
     
