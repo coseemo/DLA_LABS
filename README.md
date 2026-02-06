@@ -18,6 +18,10 @@ These are the wandb repositories for each lab:
 -    **lab3:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/LAB3-Transformers?nw=nwusercosimoborghini1]
 -    **lab4:** [https://wandb.ai/cosimo-borghini1-universit-di-firenze/Lab4-OOD_Detection?nw=nwusercosimoborghini1]
 
+Here you can find the presentation for the "Argomento di Approfondimento", it analyzes the use of a frozen Transformer block
+as Visual Encoder layers expressed in [https://arxiv.org/html/2310.12973v2];
+- **presentation:** []
+
 ## Setup
 
 To get started, clone the repository and install the required Python packages.
