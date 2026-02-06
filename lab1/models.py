@@ -73,7 +73,6 @@ class MLP(nn.Module):
         if self.residual:
             for layer in self.hidden_layers:
                 res = x
-                x = layer(x)
                 x = layer(x) + res
         else:
             for layer in self.hidden_layers:
