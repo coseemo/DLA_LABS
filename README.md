@@ -20,7 +20,7 @@ These are the wandb repositories for each lab:
 
 Here you can find the presentation for the "Argomento di Approfondimento", it analyzes the use of a frozen Transformer block
 as Visual Encoder layers expressed in [https://arxiv.org/html/2310.12973v2];
-- **presentation:** []
+- **presentation:** [https://github.com/coseemo/DLA_LABS/blob/main/DLA_Approfondimento.pdf]
 
 ## Setup
 
